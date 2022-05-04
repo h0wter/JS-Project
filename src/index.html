@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmoteka</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
@@ -14,152 +14,148 @@
       crossorigin="anonymous"
     />
   </head>
+
   <body>
-    
-      <header class="header">
-        <div class="container header__container">
-      
-          <nav class="header__nav">
-            <a class="header__logo " href="">
-              <svg class="header__icon" width="24" height="24">
-                <use href="./images/symbol-defs.svg#icon-film">      
-                </use>
-              </svg>
-              <span class="header__name">Filmoteka</span>
-            </a>
-            <ul class="header__list">
-              <li class="header__item">
-                <button class="header__btn">Home</button>
-              </li>
-              <li class="header__item">
-               <button class="header__btn">my library</button>
-              </li>
-             
-            </ul>
-          </nav>
-
-          <form class="header__form" name="form" autocomplete="on" novalidate>
-            
-          
-            <label class="form__label">
-             
-              <input class="form__input" type="text" name="search" placeholder="Поиск фильмов"/>
-            </label>
-          
-            <button class="form__btn" type="submit">
-              <svg class="form__icon" width="12" height="12" >
-              <use href="./images/symbol-defs.svg#icon-search"></use>
+    <header class="header">
+      <div class="container header__container">
+        <nav class="header__nav">
+          <a class="header__logo" href="">
+            <svg class="header__icon" width="24" height="24">
+              <use href="./images/symbol-defs.svg#icon-film" />
             </svg>
-          </button>
-          </form>
+            <span class="header__name">Filmoteka</span>
+          </a>
+          <ul class="header__list">
+            <li class="header__item">
+              <button class="header__btn">Home</button>
+            </li>
+            <li class="header__item">
+              <button class="header__btn">my library</button>
+            </li>
+          </ul>
+        </nav>
 
-          
+        <div class="header_form-container">
+          <form class="header__form" name="form" autocomplete="on" novalidate>
+            <label class="form__label">
+              <input class="form__input" type="text" name="search" placeholder="Поиск фильмов" />
+            </label>
+
+            <button class="form__btn" type="submit">
+              <svg class="form__icon" width="12" height="12">
+                <use href="./images/symbol-defs.svg#icon-search" />
+              </svg>
+            </button>
+          </form>
+          <ul class="library-buttons-list" style="display: none">
+            <li class="library-buttons-item">
+              <button class="library-btn active">watched</button>
+            </li>
+            <li class="library-buttons-item"><button class="library-btn">queue</button></li>
+          </ul>
+        </div>
+      </div>
     </header>
     <main>
       <section class="gallery">
-
         <div class="container">
-
           <ul class="gallery__list">
             <li class="gallery__card">
-              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" >
+              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
               <div class="gallery__thumb">
                 <h3 class="gallery__name">GREYHOUND</h3>
                 <p class="gallery__description">Drama, Action | 2020</p>
               </div>
             </li>
             <li class="gallery__card">
-              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="">
+              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
               <div class="gallery__thumb">
                 <h3 class="gallery__name">GREYHOUND</h3>
                 <p class="gallery__description">Drama, Action | 2020</p>
               </div>
             </li>
             <li class="gallery__card">
-              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="">
+              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
               <div class="gallery__thumb">
                 <h3 class="gallery__name">GREYHOUND</h3>
                 <p class="gallery__description">Drama, Action | 2020</p>
               </div>
             </li>
             <li class="gallery__card">
-              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="">
+              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
               <div class="gallery__thumb">
                 <h3 class="gallery__name">GREYHOUND</h3>
                 <p class="gallery__description">Drama, Action | 2020</p>
               </div>
             </li>
             <li class="gallery__card">
-              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="">
+              <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
               <div class="gallery__thumb">
                 <h3 class="gallery__name">GREYHOUND</h3>
                 <p class="gallery__description">Drama, Action | 2020</p>
               </div>
             </li>
           </ul>
-
         </div>
-
       </section>
-
     </main>
     <footer class="footer">
       <div class="container">
-      <div class="footer__action">
-        <ul class="footer__list">
-          <li class="footer__item">
-            <button class="footer__btn arrow ">
-              <img class="footer__icon  arrow-left" src="./images/arrow-left.svg" alt="">
-              <!-- <svg class="footer__icon" >
+        <div class="footer__action">
+          <ul class="footer__list">
+            <li class="footer__item">
+              <button class="footer__btn arrow">
+                <img class="footer__icon arrow-left" src="./images/arrow-left.svg" alt="" />
+                <!-- <svg class="footer__icon" >
                 <use href="./images/symbol-defs.svg#icon-arrow-left"></use>
               </svg> -->
-            </button>
-          </li>
-          <li class="footer__item">
-            <button class="footer__btn">...</button>
-          </li>
-          <li class="footer__item ">
-            <button class="footer__btn ">13</button>
-          </li>
-          <li class="footer__item">
-            <button class="footer__btn">14</button>
-          </li>
-          <li class="footer__item is-active">
-            <button class="footer__btn ">15</button>
-          </li>
-          <li class="footer__item">
-            <button class="footer__btn">16</button>
-          </li>
-          <li class="footer__item">
-            <button class="footer__btn">17</button>
-          </li>
-          <li class="footer__item">
-            <button class="footer__btn">...</button>
-          </li>
-          <li class="footer__item">
-            <button class="footer__btn arrow ">
-              <img class="footer__icon arrow-right" src="./images/arrow-left.svg" alt="">
-              <!-- <svg class="footer__icon">
+              </button>
+            </li>
+            <li class="footer__item">
+              <button class="footer__btn">...</button>
+            </li>
+            <li class="footer__item">
+              <button class="footer__btn">13</button>
+            </li>
+            <li class="footer__item">
+              <button class="footer__btn">14</button>
+            </li>
+            <li class="footer__item is-active">
+              <button class="footer__btn">15</button>
+            </li>
+            <li class="footer__item">
+              <button class="footer__btn">16</button>
+            </li>
+            <li class="footer__item">
+              <button class="footer__btn">17</button>
+            </li>
+            <li class="footer__item">
+              <button class="footer__btn">...</button>
+            </li>
+            <li class="footer__item">
+              <button class="footer__btn arrow">
+                <img class="footer__icon arrow-right" src="./images/arrow-left.svg" alt="" />
+                <!-- <svg class="footer__icon">
                 <use href="./images/symbol-defs.svg#icon-arrow-right"></use>
               </svg> -->
-            </button>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__text">
-        <p class="footer__copy">&copy; 2020 | All Rights Reserved | Developed with
-         <svg class="icon-heart">
-           <use href="./images/symbol-defs.svg#icon-heart"></use>
-         </svg>
-        by <span class="goit-student">GoIT Students</span> 
-        </p>
-      </div>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__text">
+          <p class="footer__copy">
+            &copy; 2020 | All Rights Reserved | Developed with
+            <svg class="icon-heart">
+              <use href="./images/symbol-defs.svg#icon-heart" />
+            </svg>
+            by <span class="goit-student">GoIT Students</span>
+          </p>
+        </div>
       </div>
     </footer>
-  
+
     <!-- <include src="./partials/example.html"></include> -->
 
-    
     <script src="./index.js"></script>
   </body>
 </html>
