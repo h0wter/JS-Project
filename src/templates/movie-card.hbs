@@ -1,0 +1,21 @@
+{{#each this}}
+  <li class='movie-card' data-action={{dataMovie}}>
+    <div class='movie-body'>
+      <img src='{{poster_path}}'
+      alt='{{original_title}}'
+      class='movie-image'
+      data-action={{id}}
+      />
+    </div>
+    <div class='movie-about'>
+      <h3 class='movie-title'>{{original_title}}</h3>
+      <ul class="movie-card-list">
+        <li class="movie-card-item">
+          <p class='movie-id'>{{genre_ids}}</p>
+        <li class="movie-card-item">
+          <p class='movie-release-date'>&nbsp| {{release_date}}</p>
+        </li>
+      </ul>
+    </div>
+  </li>
+{{/each}}
