@@ -1,9 +1,9 @@
 
 .header{
-  max-width: 1024px;
+  // max-width: 1024px;
   margin: 0 auto;
   padding-top: 40px;
-  padding-bottom: 80px;
+  padding-bottom: 60px;
 
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
   url("../images/header-bg.jpg");
@@ -118,4 +118,10 @@
   outline: none;
   border: none;
   border-bottom: 0.5px solid #818181;
+}
+.header__name {
+  @media screen and (max-width: 767px) {
+    display:none;
+    position: absolute;
+  }
 }
