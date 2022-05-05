@@ -1,16 +1,32 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
+import { toggleModal } from './js/utils/modal';
+import { API_URL, searchURL } from './js/utils/settings.js';
+import getMovies from './js/utils/getMovies';
+import createMoviesMarkup from './js/utils/createMoviesMarkup';
+import showMovies from './js/utils/showMovies';
 
-const refs = {
-    openModalBtn: document.querySelector('[data-modal-open]'),
-    closeModalBtn: document.querySelector('[data-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
-  };
+addEventListener('DOMContentLoaded', startSearch(API_URL));
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
+const form = document.getElementById('form');
+const search = document.getElementById('search');
 
-  function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
+form.addEventListener('submit', onFormSubmit);
+
+async function startSearch(API_URL) {
+  const result = await getMovies(API_URL);
+  const markup = createMoviesMarkup(result.results);
+  showMovies(markup.join(''));
+}
+
+async function onFormSubmit(e) {
+  e.preventDefault();
+
+  const searchTerm = search.value;
+  if (!searchTerm) {
+    console.log('empty field'); //тут будет уведомление о неуспешном поиске
+    return;
   }
-
+  const url = searchURL + '&query=' + searchTerm;
+  startSearch(url);
+}
