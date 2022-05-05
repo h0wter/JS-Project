@@ -5,6 +5,7 @@ import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
+import refs from './'
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
