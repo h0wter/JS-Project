@@ -2,7 +2,7 @@ import './sass/main.scss';
 import './js/api/fetch-api';
 import { toggleModal } from './js/utils/modal';
 import { API_URL, searchURL } from './js/utils/settings.js';
-import getMovies from './js/utils/getMovies';
+import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
 
