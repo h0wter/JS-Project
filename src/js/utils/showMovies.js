@@ -1,6 +1,6 @@
-const galleryList = document.querySelector('.gallery__list');
+import refs from './refs'
 
 export default function showMovies(markup) {
-  galleryList.innerHTML = '';
-  galleryList.insertAdjacentHTML('beforeend', markup);
+  refs.galleryList.innerHTML = '';
+  refs.galleryList.insertAdjacentHTML('beforeend', markup);
 }
