@@ -5,10 +5,14 @@ import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
+import onHomeBtn from './js/utils/onHomeBtn';
+import onLibraryBtn from './js/utils/onLibraryBtn';
 import refs from './js/utils/refs';
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
+refs.homeBtn.addEventListener('click', onHomeBtn);
+refs.libraryBtn.addEventListener('click', onLibraryBtn);
 refs.form.addEventListener('submit', onFormSubmit);
 
 async function startSearch(API_URL) {
