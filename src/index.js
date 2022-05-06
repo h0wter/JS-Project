@@ -5,14 +5,11 @@ import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
-import refs from './'
+import refs from './js/utils/refs';
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
-const form = document.getElementById('form');
-const search = document.getElementById('search');
-
-form.addEventListener('submit', onFormSubmit);
+refs.form.addEventListener('submit', onFormSubmit);
 
 async function startSearch(API_URL) {
   const result = await getMovies(API_URL);
@@ -23,7 +20,7 @@ async function startSearch(API_URL) {
 async function onFormSubmit(e) {
   e.preventDefault();
 
-  const searchTerm = search.value;
+  const searchTerm = refs.search.value;
   if (!searchTerm) {
     console.log('empty field'); //тут будет уведомление о неуспешном поиске
     return;
