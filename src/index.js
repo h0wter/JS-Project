@@ -4,7 +4,7 @@ import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
-import { attachOpenModalEvents } from './js/utils/movieModal';
+import { attachOpenModalEvent } from './js/utils/movieModal';
 import { addMoviesToCache } from './js/utils/moviesCache'
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
@@ -19,7 +19,7 @@ async function startSearch(API_URL) {
   addMoviesToCache(result.results);
   const markup = createMoviesMarkup(result.results);
   showMovies(markup.join(''));
-  attachOpenModalEvents();
+  attachOpenModalEvent();
 }
 
 async function onFormSubmit(e) {
