@@ -5,6 +5,7 @@ const refs = {
     galleryList: document.querySelector('.gallery__list'),
     form: document.getElementById('form'),
     search: document.getElementById('search'),
+    inputError: document.getElementById('input-error')
 };
 
 export default refs;
