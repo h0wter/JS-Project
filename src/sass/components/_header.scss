@@ -82,10 +82,21 @@
 
 }
 
-// .form__label{
-//   position: relative;
-// }
+ .form__label{
+   position: relative;
+ }
+ 
+ .input-error {
+   display: none;
+ }
 
+ .input-error-active {
+  color: red;
+  position: absolute;
+  top: 35px;
+  left: 65px;
+  display: block;
+ }
 
 .form__input{
   background-color: transparent;
@@ -93,7 +104,6 @@
   border-bottom: 0.5px solid #818181;
   width: 336px;
   color: #FFFFFF;
-  
 }
 
 // .form__input:active{
