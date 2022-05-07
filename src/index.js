@@ -1,10 +1,11 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
-import { toggleModal } from './js/utils/modal';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
+import { attachOpenModalEvent } from './js/utils/movieModal';
+import { addMoviesToCache } from './js/utils/moviesCache';
 import onHomeBtn from './js/utils/onHomeBtn';
 import onLibraryBtn from './js/utils/onLibraryBtn';
 import changeTheme from './js/utils/body-change-theme';
@@ -19,8 +20,10 @@ refs.form.addEventListener('submit', onFormSubmit);
 let result = null;
 async function startSearch(API_URL) {
   result = await getMovies(API_URL);
+  addMoviesToCache(result.results);
   const markup = createMoviesMarkup(result.results);
   showMovies(markup.join(''));
+  attachOpenModalEvent();
 }
 
 async function onFormSubmit(e) {
