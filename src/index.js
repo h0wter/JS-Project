@@ -11,33 +11,30 @@ import Notiflix from 'notiflix';
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
 refs.form.addEventListener('submit', onFormSubmit);
-let data = null
+let result = null;
 async function startSearch(API_URL) {
-  const result = await getMovies(API_URL);
-  data = result
+  result = await getMovies(API_URL);
   const markup = createMoviesMarkup(result.results);
   showMovies(markup.join(''));
 }
 
 async function onFormSubmit(e) {
   e.preventDefault();
-  const isActive = refs.inputError.classList.contains('input-error-active')
+  const isActive = refs.inputError.classList.contains('input-error-active');
 
   const searchTerm = refs.search.value;
-  
+
   if (!searchTerm.trim()) {
-    if(isActive) return
+    if (isActive) return;
     refs.inputError.classList.replace('input-error', 'input-error-active'); //тут будет уведомление о неуспешном поиске
     return;
-  } 
-  if(searchTerm.trim()) {
+  }
+  if (searchTerm.trim()) {
     refs.inputError.classList.replace('input-error-active', 'input-error');
   }
   const url = searchURL + '&query=' + searchTerm;
-  data = null
-  await startSearch(url)
- if(data.results.length === 0) {
-  Notiflix.Notify.warning('По вашему запросу ничего не найденно');
- }
+  await startSearch(url);
+  if (result.results.length === 0) {
+    Notiflix.Notify.warning('По вашему запросу ничего не найдено');
+  }
 }
-
