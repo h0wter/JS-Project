@@ -1,79 +1,80 @@
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
-    background-color: #ffffff;
-    font-family: Roboto, sans-serif;
+  background-color: #ffffff;
+  font-family: Roboto, sans-serif;
 }
 
 h1,
 h2,
 h3,
 p {
-    margin: 0;
+  margin: 0;
 }
 
 img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 0;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
-// 
+//
 
 .container {
-    min-width: 320px;
-    // width: 100%;
-    // padding-left: 15px;
-    // padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
+  min-width: 320px;
+  // width: 100%;
+  // padding-left: 15px;
+  // padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
 
-    @media screen and (min-width: 320px) {
-        width: 280px;
-    }
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
 
-    @media screen and (min-width: 768px) {
-        width: 617px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 617px;
+  }
 
-    @media screen and (min-width: 1024px) {
-        width: 882px;
-    }
+  @media screen and (min-width: 1024px) {
+    width: 882px;
+  }
 }
 
 .visually-hidden {
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    border: 0;
-    padding: 0;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    margin: -1px;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }
+
+

@@ -5,17 +5,21 @@ import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
 import { attachOpenModalEvent } from './js/utils/movieModal';
-import { addMoviesToCache } from './js/utils/moviesCache'
+import { addMoviesToCache } from './js/utils/moviesCache';
+import onHomeBtn from './js/utils/onHomeBtn';
+import onLibraryBtn from './js/utils/onLibraryBtn';
+import changeTheme from './js/utils/body-change-theme';
+import refs from './js/utils/refs';
+import Notiflix from 'notiflix';
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
-const form = document.getElementById('form');
-const search = document.getElementById('search');
-
-form.addEventListener('submit', onFormSubmit);
-
+refs.homeBtn.addEventListener('click', onHomeBtn);
+refs.libraryBtn.addEventListener('click', onLibraryBtn);
+refs.form.addEventListener('submit', onFormSubmit);
+let result = null;
 async function startSearch(API_URL) {
-  const result = await getMovies(API_URL);
+  result = await getMovies(API_URL);
   addMoviesToCache(result.results);
   const markup = createMoviesMarkup(result.results);
   showMovies(markup.join(''));
@@ -24,12 +28,21 @@ async function startSearch(API_URL) {
 
 async function onFormSubmit(e) {
   e.preventDefault();
+  const isActive = refs.inputError.classList.contains('input-error-active');
 
-  const searchTerm = search.value;
-  if (!searchTerm) {
-    console.log('empty field'); //тут будет уведомление о неуспешном поиске
+  const searchTerm = refs.search.value;
+
+  if (!searchTerm.trim()) {
+    if (isActive) return;
+    refs.inputError.classList.replace('input-error', 'input-error-active'); //тут будет уведомление о неуспешном поиске
     return;
   }
+  if (searchTerm.trim()) {
+    refs.inputError.classList.replace('input-error-active', 'input-error');
+  }
   const url = searchURL + '&query=' + searchTerm;
-  startSearch(url);
+  await startSearch(url);
+  if (result.results.length === 0) {
+    Notiflix.Notify.warning('По вашему запросу ничего не найдено');
+  }
 }
