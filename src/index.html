@@ -27,10 +27,10 @@
           </a>
           <ul class="header__list">
             <li class="header__item">
-              <button class="header__btn">Home</button>
+              <button class="header__btn curent js-home">Home</button>
             </li>
             <li class="header__item">
-              <button class="header__btn">my library</button>
+              <button class="header__btn js-library">my library</button>
             </li>
           </ul>
         </nav>
@@ -53,11 +53,15 @@
               </svg>
             </button>
           </form>
-          <ul class="library-buttons-list" style="display: none">
+        </div>
+        <div class="header_buttons-conteiner display-none">
+          <ul class="library-buttons-list">
             <li class="library-buttons-item">
-              <button class="library-btn active">watched</button>
+              <button class="library-btn active js-watched">watched</button>
             </li>
-            <li class="library-buttons-item"><button class="library-btn">queue</button></li>
+            <li class="library-buttons-item">
+              <button class="library-btn js-queue">queue</button>
+            </li>
           </ul>
         </div>
         <div class="toolbar">
