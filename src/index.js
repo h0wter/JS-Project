@@ -1,3 +1,4 @@
+import mask from './js/utils/lader';
 import './sass/main.scss';
 import './js/api/fetch-api';
 import { toggleModal } from './js/utils/modal';
