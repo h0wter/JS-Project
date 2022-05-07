@@ -8,5 +8,6 @@ const settings = {
 const API_URL =
   settings.BASE_URL + 'discover/movie?sort_by=popularity.desc&api_key=' + settings.API_KEY;
 const searchURL = settings.BASE_URL + 'search/movie?&api_key=' + settings.API_KEY;
+const GENRE_URL = settings.BASE_URL + 'genre/movie/list?api_key=' + settings.API_KEY;
 
-export { API_URL, searchURL };
+export { API_URL, searchURL, GENRE_URL };

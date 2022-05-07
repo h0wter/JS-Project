@@ -11,6 +11,14 @@ import onLibraryBtn from './js/utils/onLibraryBtn';
 import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
+import { getGenre } from './js/getGenre.js';
+export let genreList;
+
+getGenre()
+  .then(entry => {
+    return (genreList = entry);
+  })
+  .catch(error => console.log(error));
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
