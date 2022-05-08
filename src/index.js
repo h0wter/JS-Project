@@ -1,7 +1,8 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
+import './js/searchByGenreForm';
 import PaginationMain from './js/pagination/main';
-import { API_URL, searchURL } from './js/utils/settings.js';
+import { API_URL, searchURL,  ADD, GenreSearchUrl  } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
@@ -12,14 +13,13 @@ import onLibraryBtn from './js/utils/onLibraryBtn';
 import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
-import { getGenre } from './js/getGenre.js';
-export let genreList;
 
-getGenre()
-  .then(entry => {
-    return (genreList = entry);
-  })
-  .catch(error => console.log(error));
+
+// getGenre()
+//   .then(entry => {
+//     return (genreList = entry);
+//   })
+//   .catch(error => console.log(error));
 
 new PaginationMain();
 
@@ -56,4 +56,22 @@ async function onFormSubmit(e) {
   if (result.results.length === 0) {
     Notiflix.Notify.warning('По вашему запросу ничего не найдено');
   }
+}
+refs.searcGenreForm.addEventListener("change",showResulte)
+
+function showResulte() {
+  const genreID = Number(refs.searcGenreForm.value);
+  const Ind = refs.searcGenreForm.selectedIndex;
+  const T = refs.searcGenreForm.options[Ind].text;
+ 
+  // console.dir(sV);
+  
+  // console.dir(T);
+   if ( genreID === 0){
+startSearch(API_URL)
+   }
+   else{
+const genUrl = GenreSearchUrl + genreID+ ADD;
+startSearch(genUrl)
+   }
 }

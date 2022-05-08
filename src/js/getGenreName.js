@@ -1,4 +1,4 @@
-import { genreList } from '../index.js';
+import { genreList } from './searchByGenreForm';
 
 export function getGenreName(idList) {
   if (idList.length <= 3) {

@@ -12,8 +12,9 @@ const API_URL =
   settings.API_KEY +
   '&page=' +
   settings.PAGE;
+  const ADD = '&api_key=' + settings.API_KEY + '&page=' + settings.PAGE;
 const searchURL =
   settings.BASE_URL + 'search/movie?&api_key=' + settings.API_KEY + '&page=' + settings.PAGE;
 const GENRE_URL = settings.BASE_URL + 'genre/movie/list?api_key=' + settings.API_KEY;
-
-export { API_URL, searchURL, GENRE_URL };
+const GenreSearchUrl = settings.BASE_URL + 'discover/movie?with_genres=';
+export { API_URL, searchURL, GENRE_URL, ADD, GenreSearchUrl };
