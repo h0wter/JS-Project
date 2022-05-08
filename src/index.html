@@ -27,10 +27,10 @@
           </a>
           <ul class="header__list">
             <li class="header__item">
-              <button class="header__btn">Home</button>
+              <button class="header__btn current js-home">Home</button>
             </li>
             <li class="header__item">
-              <button class="header__btn">my library</button>
+              <button class="header__btn js-library">my library</button>
             </li>
           </ul>
         </nav>
@@ -45,21 +45,42 @@
                 placeholder="Поиск фильмов"
                 id="search"
               />
+              <p id="input-error" class="input-error">Введите корректный запрос</p>
             </label>
-
             <button class="form__btn" type="submit">
               <svg class="form__icon" width="12" height="12">
                 <use href="./images/symbol-defs.svg#icon-search" />
               </svg>
             </button>
           </form>
-          <ul class="library-buttons-list" style="display: none">
+        </div>
+        <div class="header_buttons-container display-none">
+          <ul class="library-buttons-list">
             <li class="library-buttons-item">
-              <button class="library-btn active">watched</button>
+              <button class="library-btn active js-watched">watched</button>
             </li>
-            <li class="library-buttons-item"><button class="library-btn">queue</button></li>
+            <li class="library-buttons-item">
+              <button class="library-btn js-queue">queue</button>
+            </li>
           </ul>
         </div>
+        <div class="toolbar">
+          <svg class="theme-switch__icon sun" role="img" aria-label="Иконка солнца">
+              <use href="./images/symbol-defs.svg#icon-sun-fill"></use>
+          </svg>
+          <div class="theme-switch">
+              <div class="theme-switch__control">
+                  <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+                      aria-label="Зміна між світлою і темною темою" />
+                  <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+                  </label>
+                  <div aria-hidden="true" class="theme-switch__marker"></div>
+              </div>
+          </div>
+          <svg class="theme-switch__icon moon" aria-label="Иконка луны">
+              <use href="./images/symbol-defs.svg#icon-moon-stroke"></use>
+          </svg>
+      </div>
       </div>
     </header>
     <section class="gallery">
@@ -121,43 +142,7 @@
         </div>
       </div>
     </footer>
-    <button type="button" data-modal-open>Temp button to open modal</button>
-    <div class="backdrop is-hidden" data-modal>
-      <div class="modal">
-        <div class="modal_left">
-          <img class="modal__img" src="./images/Rectangle 5.jpg" alt="" />
-        </div>
-        <div class="modal_right">
-          <h1 class="modal__title">GREYHOUND</h1>
-          <div class="modal_right__subtitles">
-            <div class="modal__subtitles">
-              <h2 class="modal__subtitle">Vote / Votes</h2>
-              <h2 class="modal__subtitle">Popularity</h2>
-              <h2 class="modal__subtitle">Original Title</h2>
-              <h2 class="modal__subtitle">Genre</h2>
-            </div>
-            <div class="modal__subtitles__text">
-              <p class="modal__subtitle__text"><span class="modal_vote">7.3</span> / 1260</p>
-              <p class="modal__subtitle__text">100.2</p>
-              <p class="modal__subtitle__text">GREYHOUND</p>
-              <p class="modal__subtitle__text">Western</p>
-            </div>
-          </div>
-          <h2 class="modal_about_title">ABOUT</h2>
-          <p class="modal_about_text">
-            Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the
-            most corrupt settlement of the gold rush towns. But not all goes to plan one is killed
-            and the other three escapes with bags of gold hide out in the abandoned gold mine where
-            they happen across another gang of three – who themselves were planning to hit the very
-            same bank! As tensions rise, things go from bad to worse as they realise the bags of
-            gold are filled with lead... they’ve been double crossed – but by who and how?
-          </p>
-          <button type="button" class="modal_close_btn" data-modal-close>close</button>
-          <button type="button" class="modal__btn">Add to Watched</button>
-          <button type="button" class="modal__btn">Add to Queue</button>
-        </div>
-      </div>
-    </div>
+    <div class="backdrop is-hidden" data-modal></div>
 
     <!-- <include src="./partials/example.html"></include> -->
 
