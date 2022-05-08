@@ -102,9 +102,12 @@
   background-color: transparent;
   border: none;
   border-bottom: 0.5px solid #818181;
-  width: 336px;
+  width: 280px;
   color: #FFFFFF;
-}
+
+@media screen and (min-width: 768px) {
+  width: 336px;
+}}
 
 // .form__input:active{
 //   background-color: transparent;
