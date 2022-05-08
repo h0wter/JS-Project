@@ -1,5 +1,6 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
+import PaginationMain from './js/pagination/main';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
@@ -19,6 +20,8 @@ getGenre()
     return (genreList = entry);
   })
   .catch(error => console.log(error));
+
+new PaginationMain();
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
