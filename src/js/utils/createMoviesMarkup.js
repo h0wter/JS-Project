@@ -5,11 +5,12 @@ export default function createMoviesMarkup(data) {
   return data
     .map(entry => {
       entry.genreNames = getGenreName(entry.genre_ids);
-      if (entry.release_date === '') {
+      if (!entry.release_date) {
         entry.shortDate = '';
         return entry;
       }
       entry.shortDate = entry.release_date.slice(0, 4);
+      entry.showDivider = entry.genreNames && entry.shortDate;
       return entry;
     })
     .map(movieCardTpl);
