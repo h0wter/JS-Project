@@ -1,11 +1,18 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
+
+import PaginationMain from './js/pagination/main';
+
 import { toggleModal } from './js/utils/modal';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
 import refs from './js/utils/refs';
+
+
+
+new PaginationMain()
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
@@ -28,3 +35,5 @@ async function onFormSubmit(e) {
   const url = searchURL + '&query=' + searchTerm;
   startSearch(url);
 }
+
+
