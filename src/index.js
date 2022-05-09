@@ -2,6 +2,7 @@ import './sass/main.scss';
 import './js/api/fetch-api';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
+import defaultImg from './js/utils/defaultImg';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
 import { attachOpenModalEvent } from './js/utils/movieModal';
