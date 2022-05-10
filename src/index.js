@@ -1,6 +1,6 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
-import PaginationMain from './js/pagination/main';
+import Main from './js/main';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
@@ -14,14 +14,12 @@ import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
 export let genreList;
-
+new Main();
 getGenre()
   .then(entry => {
     return (genreList = entry);
   })
   .catch(error => console.log(error));
-
-new PaginationMain();
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
