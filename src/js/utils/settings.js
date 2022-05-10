@@ -6,6 +6,8 @@ const settings = {
   PAGE: 1,
 };
 
+const IMG_URL = 'https://image.tmdb.org/t/p/w500/';
+
 const API_URL =
   settings.BASE_URL +
   'discover/movie?sort_by=popularity.desc&api_key=' +
@@ -16,5 +18,4 @@ const searchURL =
   settings.BASE_URL + 'search/movie?&api_key=' + settings.API_KEY + '&page=' + settings.PAGE;
 const GENRE_URL = settings.BASE_URL + 'genre/movie/list?api_key=' + settings.API_KEY;
 
-export { API_URL, searchURL, GENRE_URL, settings};
-
+export { API_URL, searchURL, IMG_URL, GENRE_URL, settings };
