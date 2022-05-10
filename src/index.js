@@ -3,6 +3,7 @@ import './js/api/fetch-api';
 import Main from './js/main';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
+import defaultImg from './js/utils/defaultImg';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
 import { attachOpenModalEvent } from './js/utils/movieModal';
@@ -29,10 +30,15 @@ refs.form.addEventListener('submit', onFormSubmit);
 let result = null;
 async function startSearch(API_URL) {
   result = await getMovies(API_URL);
+
   addMoviesToCache(result.results);
   const markup = createMoviesMarkup(result.results);
   showMovies(markup.join(''));
   attachOpenModalEvent();
+  const video = result.results.filter(el => {
+    return el.video
+  })
+ console.log(video)
 }
 
 async function onFormSubmit(e) {

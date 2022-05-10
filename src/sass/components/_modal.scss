@@ -1,4 +1,5 @@
 .backdrop {
+    z-index: 10;
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -239,3 +240,22 @@
 
 }
 
+.modal__btn--player {
+    background-color: transparent;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    margin-left: 12px;
+   width: 90px;
+}
+
+.player-link {
+    padding: 20%
+}
+.player-link:visited {
+    color: inherit;
+}
