@@ -82,7 +82,21 @@ body.dark-theme {
     border-radius: inherit;
     z-index: 1;
     cursor: pointer;
+
+    
 }
+
+.theme-switch__track:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: -5px;
+    left: -19px;
+    right: -19px;
+    bottom: -5px;
+}
+  
+
   
 .theme-switch__marker {
     position: relative;
