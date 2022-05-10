@@ -6,9 +6,9 @@ export default function markupQueueFilm() {
     const savedQueueId = localStorage.getItem("Queue") // отримую збережені id з пам'яті
     const parseSavedQueueId = JSON.parse(savedQueueId) // роблю масив збережених id для перебору
 
-    // якщо немає збережених фільмів то пише, що немає фільмів
-    if (parseSavedQueueId.length === 0) {
-        refs.galleryList.innerHTML = noQueue(); 
+    // якщо немає збережених фільмів або немає localStorage то пише, що немає фільмів
+    if (localStorage.getItem("Queue") === null || parseSavedQueueId.length === 0) {
+        return refs.galleryList.innerHTML = noQueue(); 
     }
 
     // створюю картки фільмів
