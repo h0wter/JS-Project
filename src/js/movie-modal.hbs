@@ -19,7 +19,10 @@
           <p class="modal-about__text">{{overview}}</p>
           <ul class="modal-buttons__list">
             <li><button type="button" class="modal__btn modal__btn--watch">Add to Watched</button></li>
-            <li><button type="button" class="modal__btn modal__btn--queue">Add to Queue</button></li>
+            <li><button type="button" class="modal__btn modal__btn--queue">Add to Queue</button></li> 
+            {{#if video}}
+            <li><button type="button" class="modal__btn modal__btn--player"><a class="player-link" href="https://www.youtube.com/watch?v={{trailer}}" target="_blank" >Trailer</a></button></li>
+            {{/if}} 
           </ul>
         </div>
       </div>
