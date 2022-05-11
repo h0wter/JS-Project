@@ -14,6 +14,7 @@ import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
+import { onScroll, goUp, refUpbtn } from './js/utils/uparrow';
 export let genreList;
 
 getGenre()
@@ -61,3 +62,5 @@ async function onFormSubmit(e) {
     Notiflix.Notify.warning('По вашему запросу ничего не найдено');
   }
 }
+addEventListener('scroll', onScroll);
+refUpbtn.addEventListener('click', goUp);
