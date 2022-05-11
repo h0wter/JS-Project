@@ -1,6 +1,7 @@
 import renderListOfPages from './utils/renderListOfPages';
 import createMoviesMarkup from './utils/createMoviesMarkup';
 import NewsApiService from './api/newsApiService';
+import showMovies from './utils/showMovies';
 // import StartSearch from './startSearch';
 
 export default class Main {
@@ -20,7 +21,7 @@ export default class Main {
       .then(data => {
         // startSearch.addMoviesToCache(data.results);
 
-        createMoviesMarkup(data.results);
+        //showMovies(createMoviesMarkup(data.results).join(''));
 
         let totalPages = data.total_pages;
         if (totalPages > 500) {
@@ -56,8 +57,8 @@ export default class Main {
 
           apiService.getData().then(data => {
             // startSearch.addMoviesToCache(data.results);
-
-            createMoviesMarkup(data.results);
+            const markup = createMoviesMarkup(data.results);
+            showMovies(markup.join(''));
           });
           renderListOfPages(page, totalPages, this.pagination);
         });
