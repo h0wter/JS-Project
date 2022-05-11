@@ -1,6 +1,6 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
-import PaginationMain from './js/pagination/main';
+import Main from './js/main';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
 import defaultImg from './js/utils/defaultImg';
@@ -22,9 +22,7 @@ getGenre()
     return (genreList = entry);
   })
   .catch(error => console.log(error));
-
-new PaginationMain();
-
+new Main();
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
 refs.homeBtn.addEventListener('click', onHomeBtn);
@@ -35,14 +33,14 @@ async function startSearch(API_URL) {
   result = await getMovies(API_URL);
 
   addMoviesToCache(result.results);
-  const markup = createMoviesMarkup(result.results);
-  showMovies(markup.join(''));
+
+  const markup = createMoviesMarkup(result.results).join('');
+  showMovies(markup);
   loader();
   attachOpenModalEvent();
   const video = result.results.filter(el => {
     return el.video;
   });
-  console.log(video);
 }
 
 async function onFormSubmit(e) {
