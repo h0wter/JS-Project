@@ -15,13 +15,13 @@ import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
 export let genreList;
-new Main();
+
 getGenre()
   .then(entry => {
     return (genreList = entry);
   })
   .catch(error => console.log(error));
-
+new Main();
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
 refs.homeBtn.addEventListener('click', onHomeBtn);
@@ -32,13 +32,13 @@ async function startSearch(API_URL) {
   result = await getMovies(API_URL);
 
   addMoviesToCache(result.results);
-  const markup = createMoviesMarkup(result.results);
-  showMovies(markup.join(''));
+
+  const markup = createMoviesMarkup(result.results).join('');
+  showMovies(markup);
   attachOpenModalEvent();
   const video = result.results.filter(el => {
-    return el.video
-  })
- console.log(video)
+    return el.video;
+  });
 }
 
 async function onFormSubmit(e) {
