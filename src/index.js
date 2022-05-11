@@ -1,8 +1,9 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
-import PaginationMain from './js/pagination/main';
+import Main from './js/main';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
+import defaultImg from './js/utils/defaultImg';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
 import { attachOpenModalEvent } from './js/utils/movieModal';
@@ -13,6 +14,7 @@ import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
+import { onScroll, goUp, refUpbtn } from './js/utils/uparrow';
 export let genreList;
 
 getGenre()
@@ -20,9 +22,7 @@ getGenre()
     return (genreList = entry);
   })
   .catch(error => console.log(error));
-
-new PaginationMain();
-
+new Main();
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
 refs.homeBtn.addEventListener('click', onHomeBtn);
@@ -31,10 +31,15 @@ refs.form.addEventListener('submit', onFormSubmit);
 let result = null;
 async function startSearch(API_URL) {
   result = await getMovies(API_URL);
+
   addMoviesToCache(result.results);
-  const markup = createMoviesMarkup(result.results);
-  showMovies(markup.join(''));
+
+  const markup = createMoviesMarkup(result.results).join('');
+  showMovies(markup);
   attachOpenModalEvent();
+  const video = result.results.filter(el => {
+    return el.video;
+  });
 }
 
 async function onFormSubmit(e) {
@@ -57,3 +62,5 @@ async function onFormSubmit(e) {
     Notiflix.Notify.warning('По вашему запросу ничего не найдено');
   }
 }
+addEventListener('scroll', onScroll);
+refUpbtn.addEventListener('click', goUp);

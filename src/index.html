@@ -42,8 +42,9 @@
                 class="form__input"
                 type="text"
                 name="search"
-                placeholder="Поиск фильмов"
+                placeholder="Search film"
                 id="search"
+                onclick="this.value = ''"
               />
               <p id="input-error" class="input-error">Введите корректный запрос</p>
             </label>
@@ -143,6 +144,11 @@
       </div>
     </footer>
     <div class="backdrop is-hidden" data-modal></div>
+    <button class="upbtn notVisible" type="button">
+      <svg class="uparrow">
+        <use href="./images/symbol-defs.svg#icon-up-arrow"></use>
+      </svg>
+    </button>
 
     <!-- <include src="./partials/example.html"></include> -->
 

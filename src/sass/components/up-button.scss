@@ -1,0 +1,27 @@
+.upbtn {
+  position: fixed;
+  color: #fff;
+  // opacity: 0,01;
+  background-color: rgba(54,41,26,0.4);
+  right: 15px;
+  bottom: 15px;
+  padding: 4px 10px;
+  font-size: 15px;
+  border-radius: 25% 10%;
+  border-width: 0;
+  cursor: pointer;
+  // display: none;
+  text-align: center;
+  transition: transform, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.upbtn:hover {
+  transform: scale(1.03);
+  background-color:rgba(54, 41, 26, 0.8);
+}
+.uparrow {
+  width:20px;
+  height: 15px;
+}
+.notVisible {
+  opacity: 0;
+}
