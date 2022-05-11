@@ -15,7 +15,7 @@ import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
 import { onScroll, goUp } from './js/utils/uparrow';
-import loader from './js/utils/loader';
+import { loader } from './js/utils/loader';
 export let genreList;
 
 getGenre()
