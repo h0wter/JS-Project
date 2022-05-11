@@ -14,6 +14,7 @@ const refs = {
   paginationEl: document.querySelector('.footer__action'),
   headerEl: document.querySelector('header'),
   inputError: document.getElementById('input-error'),
+  upBtn: document.querySelector('.upbtn'),
 };
 
 export default refs;

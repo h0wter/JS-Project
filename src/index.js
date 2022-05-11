@@ -14,7 +14,8 @@ import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
-import { onScroll, goUp, refUpbtn } from './js/utils/uparrow';
+import { onScroll, goUp } from './js/utils/uparrow';
+import loader from './js/utils/loader';
 export let genreList;
 
 getGenre()
@@ -36,6 +37,7 @@ async function startSearch(API_URL) {
 
   const markup = createMoviesMarkup(result.results).join('');
   showMovies(markup);
+  loader();
   attachOpenModalEvent();
   const video = result.results.filter(el => {
     return el.video;
@@ -63,4 +65,4 @@ async function onFormSubmit(e) {
   }
 }
 addEventListener('scroll', onScroll);
-refUpbtn.addEventListener('click', goUp);
+refs.upBtn.addEventListener('click', goUp);
