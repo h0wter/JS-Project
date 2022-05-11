@@ -1,5 +1,5 @@
       <div class="modal">
-        <button type="button" class="modal-close__btn" data-modal-close>close</button>
+        <button type="button" class="modal__btn--close" data-modal-close></button>
         <div class="modal-left">
           <img class="modal__img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}" />
         </div>
@@ -7,13 +7,13 @@
           <h1 class="modal__title">{{original_title}}</h1>
           <ul class="modal-subtitles">
               <li class="modal-subtitles__item">Vote / Votes</li>
-              <li class="modal-subtitles__item"><span class="modal_vote">{{vote_average}}</span> / {{vote_count}}</li>
+              <li class="modal-subtitles__item"><span class="modal-vote modal-vote--avg">{{vote_average}}</span> / <span class="modal-vote modal-vote--count">{{vote_count}}</span></li>
               <li class="modal-subtitles__item">Popularity</li>
               <li class="modal-subtitles__item">{{popularity}}</li>
               <li class="modal-subtitles__item">Original Title</li>
               <li class="modal-subtitles__item">{{original_title}}</li>
               <li class="modal-subtitles__item">Genre</li>
-              <li class="modal-subtitles__item">{{genre_ids}}</li>
+              <li class="modal-subtitles__item">{{gerneNamesFull}}</li>
           </ul>
           <h2 class="modal-about__title">ABOUT</h2>
           <p class="modal-about__text">{{overview}}</p>
