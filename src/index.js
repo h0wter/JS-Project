@@ -14,6 +14,7 @@ import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
+import { loader } from './js/utils/loader';
 export let genreList;
 
 getGenre()
@@ -36,11 +37,12 @@ async function startSearch(API_URL) {
   addMoviesToCache(result.results);
   const markup = createMoviesMarkup(result.results);
   showMovies(markup.join(''));
+  loader();
   attachOpenModalEvent();
   const video = result.results.filter(el => {
-    return el.video
-  })
- console.log(video)
+    return el.video;
+  });
+  console.log(video);
 }
 
 async function onFormSubmit(e) {
