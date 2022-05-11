@@ -19,13 +19,13 @@ export function attachOpenModalEvent() {
 
 async function showMovieModal(id) {
   const movie = getMovieById(id);
-  let video;
-  if (movie.video) {
-    video = await getMoviesVideo(id);
-  }
-  if (video) {
-    movie.trailer = video.data.results[0].key;
-  }
+  // let video;
+  // if (movie.video) {
+  //   video = await getMoviesVideo(id);
+  // }
+  // if (video) {
+  //   movie.trailer = video.data.results[0].key;
+  // }
   const markup = createMovieModalMarkup(movie);
 
   movieModalElement.innerHTML = markup;
