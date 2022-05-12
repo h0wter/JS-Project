@@ -1,4 +1,4 @@
-import refs from "./refs";
+import refs from './refs';
 
 export default function showMovies(markup) {
   refs.galleryList.innerHTML = '';

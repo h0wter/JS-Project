@@ -1,8 +1,8 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
 import './js/searchByGenreForm';
-import PaginationMain from './js/pagination/main';
 import { API_URL, searchURL,  ADD, GenreSearchUrl  } from './js/utils/settings.js';
+import Main from './js/main';
 import getMovies from './js/api/fetch-api';
 import defaultImg from './js/utils/defaultImg';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
@@ -15,14 +15,15 @@ import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 
+import { onScroll, goUp, refUpbtn } from './js/utils/uparrow';
+
 
 // getGenre()
 //   .then(entry => {
 //     return (genreList = entry);
 //   })
 //   .catch(error => console.log(error));
-
-new PaginationMain();
+// new Main();
 
 addEventListener('DOMContentLoaded', startSearch(API_URL));
 
@@ -34,13 +35,13 @@ async function startSearch(API_URL) {
   result = await getMovies(API_URL);
 
   addMoviesToCache(result.results);
-  const markup = createMoviesMarkup(result.results);
-  showMovies(markup.join(''));
+
+  const markup = createMoviesMarkup(result.results).join('');
+  showMovies(markup);
   attachOpenModalEvent();
   const video = result.results.filter(el => {
-    return el.video
-  })
- console.log(video)
+    return el.video;
+  });
 }
 
 async function onFormSubmit(e) {
@@ -63,17 +64,15 @@ async function onFormSubmit(e) {
     Notiflix.Notify.warning('По вашему запросу ничего не найдено');
   }
 }
+
 refs.searcGenreForm.addEventListener("change",showResulte)
 
 function showResulte() {
   const genreID = Number(refs.searcGenreForm.value);
-  const Ind = refs.searcGenreForm.selectedIndex;
-  const T = refs.searcGenreForm.options[Ind].text;
+  // const Ind = refs.searcGenreForm.selectedIndex;
+  // const T = refs.searcGenreForm.options[Ind].text;
  
-  // console.dir(sV);
-  
-  // console.dir(T);
-   if ( genreID === 0){
+     if ( genreID === 0){
 startSearch(API_URL)
    }
    else{
@@ -81,3 +80,7 @@ const genUrl = GenreSearchUrl + genreID+ ADD;
 startSearch(genUrl)
    }
 }
+
+addEventListener('scroll', onScroll);
+refUpbtn.addEventListener('click', goUp);
+
