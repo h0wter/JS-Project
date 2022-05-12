@@ -3,8 +3,6 @@ import refs from './refs';
 export default function renderListOfPages(activePage, totalPages) {
   refs.pagination.innerHTML = '';
 
-  console.log(totalPages - 6);
-
   function markupLi(page, text, addClass) {
     const dataAttr = page ? `data-page="${page}"` : '';
     const activeClass = Number(activePage) === Number(page) ? 'is-active' : '';
@@ -50,7 +48,6 @@ export default function renderListOfPages(activePage, totalPages) {
     markup.push(markupDots);
     markup.push(markupLastLi);
     markup.push(markupArrowRight);
-    console.log(markup);
 
     refs.pagination.insertAdjacentHTML('beforeend', markup.join(''));
   }

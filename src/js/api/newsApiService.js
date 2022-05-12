@@ -9,7 +9,6 @@ export default class NewsApiService {
   }
 
   getData() {
-    console.log(this.url);
     return fetch(this.url)
       .then(r => {
         if (!r.ok) {
