@@ -33,6 +33,8 @@ async function showMovieModal(id) {
   movieModalElement.innerHTML = markup;
   movieModalElement.classList.remove('is-hidden');
   refs.body.style.overflow = "hidden";
+  refs.body.style.marginRight = "16px";
+
 
   const modalCloseBtn = document.querySelector('[data-modal-close]');
   modalCloseBtn.addEventListener('click', onClose);
@@ -50,6 +52,7 @@ function onClose(event) {
   {
     movieModalElement.classList.add('is-hidden');
     refs.body.style.overflow = "auto";
+    refs.body.style.marginRight = "0px";
     document.removeEventListener('keydown', onClose);
   }
 }
