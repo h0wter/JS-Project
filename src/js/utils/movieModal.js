@@ -126,10 +126,10 @@ function onClose() {
   movieModalElement.classList.add('is-hidden');
 
   if (refs.libraryBtn.classList.contains('current') && refs.watchedBtn.classList.contains('active')) {
-    return onWatchedBtn()
+    return onWatchedBtn() // оновлюю переглянуті фільми
   }
 
   if (refs.libraryBtn.classList.contains('current') && refs.queueBtn.classList.contains('active')) {
-    return onQueueBtn()
+    return onQueueBtn() // оновлюю чергу фільмів
   }
 }
