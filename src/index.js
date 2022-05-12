@@ -15,7 +15,7 @@ import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
 import { onScroll, goUp } from './js/utils/uparrow';
-import { loader } from './js/utils/loader';
+import { closeLoader, showLoader } from './js/utils/loader';
 export let genreList;
 
 getGenre()
@@ -31,13 +31,15 @@ refs.libraryBtn.addEventListener('click', onLibraryBtn);
 refs.form.addEventListener('submit', onFormSubmit);
 let result = null;
 async function startSearch(API_URL) {
+  showLoader();
   result = await getMovies(API_URL);
 
   addMoviesToCache(result.results);
 
   const markup = createMoviesMarkup(result.results).join('');
   showMovies(markup);
-  loader();
+  closeLoader();
+
   attachOpenModalEvent();
   const video = result.results.filter(el => {
     return el.video;
