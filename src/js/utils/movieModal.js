@@ -3,9 +3,11 @@ import movieModalTpl from '../movie-modal.hbs';
 import getMoviesVideo from '../api/fetch-videos';
 
 const movieModalElement = document.querySelector('[data-modal]');
-
+//!!!!!!!!!!!!!!!!!!!!!!!!!-------- ВАЖЛИВО--------!!!!!!!!!!!!!!!//
+//------------якщо є це, то працює перше добавляння фільмів до бібліотеки--------------//
 const itemsWatchedId = []; // пустий масив для id watched
 const itemsQueueId = []; // пустий масив для id queue
+//!-----------друга частина проблеми нижче------------//
 
 export function attachOpenModalEvent() {
   const galleryElement = document.querySelector('.gallery__list');
@@ -48,6 +50,14 @@ async function showMovieModal(id) {
   const savedWatchedId = localStorage.getItem("watched") // отримую збережені id
   const parseSavedWatchedId = JSON.parse(savedWatchedId) // роблю масив збережених id для перебору
 
+  //!!!!!!!!!!!!!!!!!!!!!!!!!-------- ВАЖЛИВО--------!!!!!!!!!!!!!!!//
+  // const itemsWatchedId = parseSavedWatchedId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
+  //! якщо це є, то все працює ідеально (додає/віднімає, після перезавантаження теж).
+  //! але при першому додаванні фільму (коли localStorage ще немає), видає помилку. 
+  //! І якщо додавати перевірки різні, то працює, але після перезавантаження сторінки, при додаванні фільму, сховище обнуляється
+  //! ідентична ситуація з другою кнопкою
+  //!--------------------ВСЕ---------------//
+
   // перевірка чи є щось в сховищі, чи ні
   if (!parseSavedWatchedId) {
     watchedModalBtn.textContent = 'Add to Watched'; // якщо фільм збережений, то кнопка зразу показує додати
@@ -76,6 +86,8 @@ async function showMovieModal(id) {
   //--------------------------------ДЛЯ КНОПКИ QUEUE------------------------------------//
   const savedQueueId = localStorage.getItem("Queue") // отримую збережені id
   const parseSavedQueueId = JSON.parse(savedQueueId) // роблю масив збережених id для перебору
+
+  // const itemsQueueId = parseSavedQueueId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
 
   // перевірка чи є щось в сховищі, чи ні
   if (!parseSavedQueueId) {
