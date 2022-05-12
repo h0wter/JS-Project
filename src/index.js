@@ -14,6 +14,7 @@ import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
+import onFormSubmit from './js/utils/onSubmit';
 export let genreList;
 
 getGenre()
@@ -22,11 +23,12 @@ getGenre()
   })
   .catch(error => console.log(error));
 new Main();
-addEventListener('DOMContentLoaded', startSearch(API_URL));
+
+refs.form.addEventListener('submit', onFormSubmit);
 
 refs.homeBtn.addEventListener('click', onHomeBtn);
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
-refs.form.addEventListener('submit', onFormSubmit);
+
 let result = null;
 async function startSearch(API_URL) {
   result = await getMovies(API_URL);
@@ -41,23 +43,23 @@ async function startSearch(API_URL) {
   });
 }
 
-async function onFormSubmit(e) {
-  e.preventDefault();
-  const isActive = refs.inputError.classList.contains('input-error-active');
+// async function onFormSubmit(e) {
+//   e.preventDefault();
+//   const isActive = refs.inputError.classList.contains('input-error-active');
 
-  const searchTerm = refs.search.value;
+//   const searchTerm = refs.search.value;
 
-  if (!searchTerm.trim()) {
-    if (isActive) return;
-    refs.inputError.classList.replace('input-error', 'input-error-active'); //тут будет уведомление о неуспешном поиске
-    return;
-  }
-  if (searchTerm.trim()) {
-    refs.inputError.classList.replace('input-error-active', 'input-error');
-  }
-  const url = searchURL + '&query=' + searchTerm;
-  await startSearch(url);
-  if (result.results.length === 0) {
-    Notiflix.Notify.warning('По вашему запросу ничего не найдено');
-  }
-}
+//   if (!searchTerm.trim()) {
+//     if (isActive) return;
+//     refs.inputError.classList.replace('input-error', 'input-error-active'); //тут будет уведомление о неуспешном поиске
+//     return;
+//   }
+//   if (searchTerm.trim()) {
+//     refs.inputError.classList.replace('input-error-active', 'input-error');
+//   }
+//   const url = searchURL + '&query=' + searchTerm;
+//   await startSearch(url);
+//   if (result.results.length === 0) {
+//     Notiflix.Notify.warning('По вашему запросу ничего не найдено');
+//   }
+// }

@@ -5,8 +5,6 @@ export default class NewsApiService {
   constructor() {
     // this.activePage = 1;
 
-    const searchURL = `${BASE_URL}/search/movie?&api_key=${API_KEY}&page=${this.activePage}`;
-
     this.url = '';
   }
 
@@ -38,11 +36,8 @@ export default class NewsApiService {
     this.url = GENRE_URL;
   }
 
-  // get page() {
-  //   return this.activePage;
-  // }
-
-  // set page(newPage) {
-  //   this.activePage = newPage;
-  // }
+  getsearchURL(activePage, query) {
+    const searchURL = `${BASE_URL}/search/movie?&api_key=${API_KEY}&page=${activePage}&query=${query}`;
+    this.url = searchURL;
+  }
 }
