@@ -2,6 +2,8 @@ const refs = {
   openModalBtn: document.querySelector('[data-modal-open]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal]'),
+  backdrop: document.querySelector('.backdrop'),
+  body: document.querySelector('body'),
   galleryList: document.querySelector('.gallery__list'),
   form: document.getElementById('form'),
   search: document.getElementById('search'),

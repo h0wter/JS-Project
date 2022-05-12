@@ -1,6 +1,8 @@
 import { getMovieById } from './moviesCache';
 import movieModalTpl from '../movie-modal.hbs';
 import getMoviesVideo from '../api/fetch-videos';
+import { getFullGerneNames } from '../getGenreName';
+import refs from './refs';
 
 const movieModalElement = document.querySelector('[data-modal]');
 //!!!!!!!!!!!!!!!!!!!!!!!!!-------- ВАЖЛИВО--------!!!!!!!!!!!!!!!//
@@ -35,25 +37,29 @@ async function showMovieModal(id) {
 
   movieModalElement.innerHTML = markup;
   movieModalElement.classList.remove('is-hidden');
+  refs.body.style.overflow = 'hidden';
+  refs.body.style.marginRight = '16px';
 
   const modalCloseBtn = document.querySelector('[data-modal-close]');
   modalCloseBtn.addEventListener('click', onClose);
+  refs.backdrop.addEventListener('click', onClose);
+  document.addEventListener('keydown', onClose);
 
-// ------------------------------НИЖЧЕ ВСЕ ДЛЯ БІБЛІОТЕКИ ----------------------------//
+  // ------------------------------НИЖЧЕ ВСЕ ДЛЯ БІБЛІОТЕКИ ----------------------------//
   const watchedModalBtn = document.querySelector('.modal__btn--watch');
-  const queueModalBtn = document.querySelector('.modal__btn--queue') 
+  const queueModalBtn = document.querySelector('.modal__btn--queue');
   const modalEl = document.querySelector('.modal__title'); // для id
-  
+
   const modalFilmId = Number(modalEl.dataset.id); // отримую id фільму
 
   //------------------------------ДЛЯ КНОПКИ WATCHED---------------------------//
-  const savedWatchedId = localStorage.getItem("watched") // отримую збережені id
-  const parseSavedWatchedId = JSON.parse(savedWatchedId) // роблю масив збережених id для перебору
+  const savedWatchedId = localStorage.getItem('watched'); // отримую збережені id
+  const parseSavedWatchedId = JSON.parse(savedWatchedId); // роблю масив збережених id для перебору
 
   //!!!!!!!!!!!!!!!!!!!!!!!!!-------- ВАЖЛИВО--------!!!!!!!!!!!!!!!//
   // const itemsWatchedId = parseSavedWatchedId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
   //! якщо це є, то все працює ідеально (додає/віднімає, після перезавантаження теж).
-  //! але при першому додаванні фільму (коли localStorage ще немає), видає помилку. 
+  //! але при першому додаванні фільму (коли localStorage ще немає), видає помилку.
   //! І якщо додавати перевірки різні, то працює, але після перезавантаження сторінки, при додаванні фільму, сховище обнуляється
   //! ідентична ситуація з другою кнопкою
   //!--------------------ВСЕ---------------//
@@ -73,19 +79,18 @@ async function showMovieModal(id) {
       const indexId = itemsWatchedId.indexOf(modalFilmId); // шукаю індекс id
       const deleteId = itemsWatchedId.splice(indexId, 1); // якщо є, то видаляю його
       watchedModalBtn.textContent = 'Add to Watched'; // міняю текст в кнопці коли видаляю фільм з переглянутих
-
     } else {
       itemsWatchedId.push(modalFilmId); // якщо немає, добавляю в масив
       watchedModalBtn.textContent = 'Remove From Watched'; // міняю текст в кнопці коли додаю фільм в переглянуті
-    };
+    }
 
     const notRepeatId = itemsWatchedId.filter((id, index, array) => array.indexOf(id) === index); // не записує двічі одне і теж id
-    localStorage.setItem("watched", JSON.stringify(notRepeatId)); // зберігаю в сховище всі id
-  };
+    localStorage.setItem('watched', JSON.stringify(notRepeatId)); // зберігаю в сховище всі id
+  }
 
   //--------------------------------ДЛЯ КНОПКИ QUEUE------------------------------------//
-  const savedQueueId = localStorage.getItem("Queue") // отримую збережені id
-  const parseSavedQueueId = JSON.parse(savedQueueId) // роблю масив збережених id для перебору
+  const savedQueueId = localStorage.getItem('Queue'); // отримую збережені id
+  const parseSavedQueueId = JSON.parse(savedQueueId); // роблю масив збережених id для перебору
 
   // const itemsQueueId = parseSavedQueueId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
 
@@ -104,21 +109,30 @@ async function showMovieModal(id) {
       const indexId = itemsQueueId.indexOf(modalFilmId); // шукаю індекс id
       const deleteId = itemsQueueId.splice(indexId, 1); // якщо є, то видаляю його
       queueModalBtn.textContent = 'Add to Queue'; // міняю текст в кнопці коли видаляю фільм з черги
-
     } else {
       itemsQueueId.push(modalFilmId); // якщо немає, добавляю в масив
       queueModalBtn.textContent = 'Remove From Watched'; // міняю текст в кнопці коли додаю фільм в чергу
-    };
+    }
 
     const notRepeatQueueId = itemsQueueId.filter((id, index, array) => array.indexOf(id) === index); // не записує двічі одне і теж id
-    localStorage.setItem("Queue", JSON.stringify(notRepeatQueueId)); // зберігаю в сховище всі id
-  };
+    localStorage.setItem('Queue', JSON.stringify(notRepeatQueueId)); // зберігаю в сховище всі id
+  }
 }
 
 function createMovieModalMarkup(movie) {
+  movie.gerneNamesFull = getFullGerneNames(movie.genre_ids);
   return movieModalTpl(movie);
 }
 
-function onClose() {
-  movieModalElement.classList.add('is-hidden');
+function onClose(event) {
+  if (
+    event.target.classList.contains('backdrop') ||
+    event.target.classList.contains('modal__btn--close') ||
+    event.keyCode == 27
+  ) {
+    movieModalElement.classList.add('is-hidden');
+    refs.body.style.overflow = 'auto';
+    refs.body.style.marginRight = '0px';
+    document.removeEventListener('keydown', onClose);
+  }
 }
