@@ -211,3 +211,19 @@
 .display-none {
   display: none;
 }
+.select {
+  border: none;
+  border-radius: 3px;
+  background-color: rgb(185, 202, 216);
+  margin-right: 15px;
+}
+
+.select:focus > option:checked{
+  background-color:  #e33762 ;
+}
+
+.select:hover {
+  
+  background: #ddd;
+  }
+  
