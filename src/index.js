@@ -16,6 +16,7 @@ import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
 import { onScroll, goUp } from './js/utils/uparrow';
 import { closeLoader, showLoader } from './js/utils/loader';
+import onFormSubmit from './js/utils/onSubmit';
 export let genreList;
 
 getGenre()
@@ -23,48 +24,51 @@ getGenre()
     return (genreList = entry);
   })
   .catch(error => console.log(error));
-new Main();
-addEventListener('DOMContentLoaded', startSearch(API_URL));
+const main = new Main();
+
+refs.form.addEventListener('submit', onFormSubmit);
+refs.headerLogo.addEventListener('click', e => {
+  main.init();
+});
 
 refs.homeBtn.addEventListener('click', onHomeBtn);
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
-refs.form.addEventListener('submit', onFormSubmit);
+
 let result = null;
-async function startSearch(API_URL) {
+export function startSearch(data) {
+  // result = await getMovies(API_URL);
   showLoader();
-  result = await getMovies(API_URL);
 
-  addMoviesToCache(result.results);
+  addMoviesToCache(data);
 
-  const markup = createMoviesMarkup(result.results).join('');
-  showMovies(markup);
+  // const markup = createMoviesMarkup(result.results).join('');
+  // showMovies(markup);
   closeLoader();
-
   attachOpenModalEvent();
-  const video = result.results.filter(el => {
+  const video = data.filter(el => {
     return el.video;
   });
 }
 
-async function onFormSubmit(e) {
-  e.preventDefault();
-  const isActive = refs.inputError.classList.contains('input-error-active');
+// async function onFormSubmit(e) {
+//   e.preventDefault();
+//   const isActive = refs.inputError.classList.contains('input-error-active');
 
-  const searchTerm = refs.search.value;
+//   const searchTerm = refs.search.value;
 
-  if (!searchTerm.trim()) {
-    if (isActive) return;
-    refs.inputError.classList.replace('input-error', 'input-error-active'); //тут будет уведомление о неуспешном поиске
-    return;
-  }
-  if (searchTerm.trim()) {
-    refs.inputError.classList.replace('input-error-active', 'input-error');
-  }
-  const url = searchURL + '&query=' + searchTerm;
-  await startSearch(url);
-  if (result.results.length === 0) {
-    Notiflix.Notify.warning('По вашему запросу ничего не найдено');
-  }
-}
+//   if (!searchTerm.trim()) {
+//     if (isActive) return;
+//     refs.inputError.classList.replace('input-error', 'input-error-active'); //тут будет уведомление о неуспешном поиске
+//     return;
+//   }
+//   if (searchTerm.trim()) {
+//     refs.inputError.classList.replace('input-error-active', 'input-error');
+//   }
+//   const url = searchURL + '&query=' + searchTerm;
+//   await startSearch(url);
+//   if (result.results.length === 0) {
+//     Notiflix.Notify.warning('По вашему запросу ничего не найдено');
+//   }
+// }
 addEventListener('scroll', onScroll);
 refs.upBtn.addEventListener('click', goUp);
