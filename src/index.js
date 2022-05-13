@@ -15,6 +15,7 @@ import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
 import onFormSubmit from './js/utils/onSubmit';
+import { onScroll, goUp, refUpbtn } from './js/utils/uparrow';
 export let genreList;
 
 getGenre()
@@ -63,3 +64,5 @@ async function startSearch(API_URL) {
 //     Notiflix.Notify.warning('По вашему запросу ничего не найдено');
 //   }
 // }
+addEventListener('scroll', onScroll);
+refUpbtn.addEventListener('click', goUp);
