@@ -1,7 +1,7 @@
 import { getMovieById } from './moviesCache';
 import movieModalTpl from '../movie-modal.hbs';
 import refs from './refs';
-import getMoviesVideo from '../api/fetch-videos';
+// import getMoviesVideo from '../api/fetch-videos';
 import onWatchedBtn from './onWatchedBtn';
 import onQueueBtn from './onQueueBtn';
 import { getFullGerneNames } from '../getGenreName';
