@@ -128,16 +128,6 @@ function createMovieModalMarkup(movie) {
 
 function onClose(event) {
   if (
-    refs.libraryBtn.classList.contains('current') &&
-    refs.watchedBtn.classList.contains('active')
-  ) {
-    return onWatchedBtn(); // оновлюю переглянуті фільми
-  }
-
-  if (refs.libraryBtn.classList.contains('current') && refs.queueBtn.classList.contains('active')) {
-    return onQueueBtn(); // оновлюю чергу фільмів
-  }
-  if (
     event.target.classList.contains('backdrop') ||
     event.target.classList.contains('modal__btn--close') ||
     event.keyCode == 27
@@ -146,5 +136,15 @@ function onClose(event) {
     refs.body.style.overflow = 'auto';
     refs.body.style.marginRight = '0px';
     document.removeEventListener('keydown', onClose);
+  }
+  if (
+    refs.libraryBtn.classList.contains('current') &&
+    refs.watchedBtn.classList.contains('active')
+  ) {
+    return onWatchedBtn(); // оновлюю переглянуті фільми
+  }
+
+  if (refs.libraryBtn.classList.contains('current') && refs.queueBtn.classList.contains('active')) {
+    return onQueueBtn(); // оновлюю чергу фільмів
   }
 }
