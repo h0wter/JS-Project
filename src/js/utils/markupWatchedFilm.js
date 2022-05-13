@@ -14,8 +14,7 @@ export default function markupWatchedFilm() {
   // створюю картки фільмів
   parseSavedWatchedId.forEach(e => {
     fetchId(e).then(movie => {
-      //refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(movie));
-      refs.galleryList.innerHTML = movieCardTpl(movie);
+      refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(movie));
     });
   });
 }
