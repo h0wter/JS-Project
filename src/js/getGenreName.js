@@ -6,3 +6,7 @@ export function getGenreName(idList) {
   }
   return `${genreList[idList[0]]}, ${genreList[idList[1]]}, Other`;
 }
+
+export function getFullGerneNames(idList) {
+  return idList.map(id => genreList[id]).join(', ');
+}
