@@ -19,6 +19,6 @@ const refs = {
   searcGenreForm: document.querySelector('.select'),
   pagination: document.querySelector('.js-pagination'),
   headerLogo: document.querySelector('.header__logo'),
-};
+ };
 
 export default refs;

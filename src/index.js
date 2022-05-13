@@ -1,5 +1,7 @@
 import './sass/main.scss';
 import './js/api/fetch-api';
+import './js/searchByGenreForm';
+import './js/utils/onSearchByGenre';
 import Main from './js/main';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';

@@ -39,4 +39,9 @@ export default class NewsApiService {
     const searchURL = `${BASE_URL}/search/movie?&api_key=${API_KEY}&page=${activePage}&query=${query}`;
     this.url = searchURL;
   }
+
+  getSearchURLbyGenre(activePage, query){
+    const searchURLbyGenre = `${BASE_URL}discover/movie?with_genres=${query}?&api_key=${API_KEY}&page=${activePage}`;
+    this.url = searchURLbyGenre;
+  }
 }
