@@ -14,8 +14,7 @@ export default function markupQueueFilm() {
   // створюю картки фільмів
   parseSavedQueueId.forEach(e => {
     fetchId(e).then(movie => {
-      // refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(movie));
-      refs.galleryList.innerHTML = movieCardTpl(movie);
+      refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(movie));
     });
   });
 }
