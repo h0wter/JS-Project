@@ -23,23 +23,26 @@ getGenre()
     return (genreList = entry);
   })
   .catch(error => console.log(error));
-new Main();
+const main = new Main();
 
 refs.form.addEventListener('submit', onFormSubmit);
+refs.headerLogo.addEventListener('click', e => {
+  main.init();
+});
 
 refs.homeBtn.addEventListener('click', onHomeBtn);
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
 
 let result = null;
-async function startSearch(API_URL) {
-  result = await getMovies(API_URL);
+export function startSearch(data) {
+  // result = await getMovies(API_URL);
 
-  addMoviesToCache(result.results);
+  addMoviesToCache(data);
 
-  const markup = createMoviesMarkup(result.results).join('');
-  showMovies(markup);
+  // const markup = createMoviesMarkup(result.results).join('');
+  // showMovies(markup);
   attachOpenModalEvent();
-  const video = result.results.filter(el => {
+  const video = data.filter(el => {
     return el.video;
   });
 }
