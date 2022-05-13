@@ -2,7 +2,7 @@ import renderListOfPages from './utils/renderListOfPages';
 import createMoviesMarkup from './utils/createMoviesMarkup';
 import NewsApiService from './api/newsApiService';
 import showMovies from './utils/showMovies';
-import attachOpenModalEvent from './utils/movieModal';
+// import attachOpenModalEvent from './utils/movieModal';
 import { startSearch } from '..';
 import * as moviesCache from './utils/moviesCache';
 const apiService = new NewsApiService();
