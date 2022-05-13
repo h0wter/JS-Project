@@ -15,6 +15,7 @@ const refs = {
   headerEl: document.querySelector('header'),
   inputError: document.getElementById('input-error'),
   pagination: document.querySelector('.js-pagination'),
+  headerLogo: document.querySelector('.header__logo'),
 };
 
 export default refs;

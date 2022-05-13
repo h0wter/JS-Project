@@ -75,6 +75,7 @@ export default function onFormSubmit(e) {
 
 function showError() {
   refs.inputError.classList.remove('visually-hidden');
+  setTimeout(hideError, 5000);
 }
 
 export function hideError() {

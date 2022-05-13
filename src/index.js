@@ -22,9 +22,12 @@ getGenre()
     return (genreList = entry);
   })
   .catch(error => console.log(error));
-new Main();
+const main = new Main();
 
 refs.form.addEventListener('submit', onFormSubmit);
+refs.headerLogo.addEventListener('click', e => {
+  main.init();
+});
 
 refs.homeBtn.addEventListener('click', onHomeBtn);
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
