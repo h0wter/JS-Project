@@ -1,16 +1,22 @@
 import { getMovieById } from './moviesCache';
 import movieModalTpl from '../movie-modal.hbs';
-.import getMoviesVideo from '../api/fetch-videos';
-import { getFullGerneNames } from '../getGenreName';
 import refs from './refs';
-
+import getMoviesVideo from '../api/fetch-videos';
+import onWatchedBtn from './onWatchedBtn';
+import onQueueBtn from './onQueueBtn';
+import { getFullGerneNames } from '../getGenreName';
 
 const movieModalElement = document.querySelector('[data-modal]');
-//!!!!!!!!!!!!!!!!!!!!!!!!!-------- ВАЖЛИВО--------!!!!!!!!!!!!!!!//
-//------------якщо є це, то працює перше добавляння фільмів до бібліотеки--------------//
-const itemsWatchedId = []; // пустий масив для id watched
-const itemsQueueId = []; // пустий масив для id queue
-//!-----------друга частина проблеми нижче------------//
+
+if (!localStorage.getItem('watched')) {
+  const itemsWatchedId = []; // пустий масив для id watched
+  localStorage.setItem('watched', JSON.stringify(itemsWatchedId)); // фальшивий localStorage
+}
+
+if (!localStorage.getItem('Queue')) {
+  const itemsQueueId = []; // пустий масив для id queue
+  localStorage.setItem('Queue', JSON.stringify(itemsQueueId)); // фальшивий localStorage
+}
 
 export function attachOpenModalEvent() {
   const galleryElement = document.querySelector('.gallery__list');
@@ -54,16 +60,11 @@ async function showMovieModal(id) {
   const modalFilmId = Number(modalEl.dataset.id); // отримую id фільму
 
   //------------------------------ДЛЯ КНОПКИ WATCHED---------------------------//
-  const savedWatchedId = localStorage.getItem('watched'); // отримую збережені id
+
+  const savedWatchedId = localStorage.getItem('watched'); // отримую збережені id + перезаписую фальшиву пам'ять
   const parseSavedWatchedId = JSON.parse(savedWatchedId); // роблю масив збережених id для перебору
 
-  //!!!!!!!!!!!!!!!!!!!!!!!!!-------- ВАЖЛИВО--------!!!!!!!!!!!!!!!//
-  // const itemsWatchedId = parseSavedWatchedId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
-  //! якщо це є, то все працює ідеально (додає/віднімає, після перезавантаження теж).
-  //! але при першому додаванні фільму (коли localStorage ще немає), видає помилку.
-  //! І якщо додавати перевірки різні, то працює, але після перезавантаження сторінки, при додаванні фільму, сховище обнуляється
-  //! ідентична ситуація з другою кнопкою
-  //!--------------------ВСЕ---------------//
+  const itemsWatchedId = parseSavedWatchedId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
 
   // перевірка чи є щось в сховищі, чи ні
   if (!parseSavedWatchedId) {
@@ -90,10 +91,10 @@ async function showMovieModal(id) {
   }
 
   //--------------------------------ДЛЯ КНОПКИ QUEUE------------------------------------//
-  const savedQueueId = localStorage.getItem('Queue'); // отримую збережені id
+  const savedQueueId = localStorage.getItem('Queue'); // отримую збережені id + перезаписую фальшиву пам'ять
   const parseSavedQueueId = JSON.parse(savedQueueId); // роблю масив збережених id для перебору
 
-  // const itemsQueueId = parseSavedQueueId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
+  const itemsQueueId = parseSavedQueueId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
 
   // перевірка чи є щось в сховищі, чи ні
   if (!parseSavedQueueId) {
@@ -135,5 +136,15 @@ function onClose(event) {
     refs.body.style.overflow = 'auto';
     refs.body.style.marginRight = '0px';
     document.removeEventListener('keydown', onClose);
+  }
+  if (
+    refs.libraryBtn.classList.contains('current') &&
+    refs.watchedBtn.classList.contains('active')
+  ) {
+    return onWatchedBtn(); // оновлюю переглянуті фільми
+  }
+
+  if (refs.libraryBtn.classList.contains('current') && refs.queueBtn.classList.contains('active')) {
+    return onQueueBtn(); // оновлюю чергу фільмів
   }
 }
