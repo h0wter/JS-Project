@@ -2,8 +2,9 @@ import renderListOfPages from './utils/renderListOfPages';
 import createMoviesMarkup from './utils/createMoviesMarkup';
 import NewsApiService from './api/newsApiService';
 import showMovies from './utils/showMovies';
-// import StartSearch from './startSearch';
-// import *as moviesCache from './utils/moviesCache'
+import attachOpenModalEvent from './utils/movieModal';
+import { startSearch } from '..';
+import * as moviesCache from './utils/moviesCache';
 const apiService = new NewsApiService();
 
 export default class Main {
@@ -17,8 +18,10 @@ export default class Main {
     apiService
       .getData()
       .then(data => {
+        moviesCache.addMoviesToCache(data.results);
         const markup = createMoviesMarkup(data.results);
         showMovies(markup.join(''));
+        startSearch(data.results);
 
         let totalPages = data.total_pages;
         if (totalPages > 500) {
