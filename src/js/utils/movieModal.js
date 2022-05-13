@@ -1,8 +1,9 @@
 import { getMovieById } from './moviesCache';
 import movieModalTpl from '../movie-modal.hbs';
-import getMoviesVideo from '../api/fetch-videos';
+.import getMoviesVideo from '../api/fetch-videos';
 import { getFullGerneNames } from '../getGenreName';
 import refs from './refs';
+
 
 const movieModalElement = document.querySelector('[data-modal]');
 //!!!!!!!!!!!!!!!!!!!!!!!!!-------- ВАЖЛИВО--------!!!!!!!!!!!!!!!//
