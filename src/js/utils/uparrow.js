@@ -1,14 +1,11 @@
-export const refUpbtn = document.querySelector('.upbtn');
+import refs from './refs.js';
 export function onScroll() {
   if (window.pageYOffset > 200) {
-    refUpbtn.classList.remove('notVisible');
-    refUpbtn.animate(
-      [{ transform: 'rotate(0)' }, { transform: 'rotate(180deg' }],
-      2000,
-      'forwards',
-    );
+    refs.upBtn.classList.remove('notvisible');
+    refs.upBtn.classList.add('arrowspin');
   } else {
-    refUpbtn.classList.add('notVisible');
+    refs.upBtn.classList.add('notvisible');
+    refs.upBtn.classList.remove('arrowspin');
   }
 }
 export function goUp() {
@@ -16,6 +13,4 @@ export function goUp() {
     top: 0,
     behavior: 'smooth',
   });
-  console.log(window);
-  window.scrollY = 0;
 }

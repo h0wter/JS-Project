@@ -3,6 +3,7 @@ import NewsApiService from '../api/newsApiService';
 import renderListOfPages from './renderListOfPages';
 import showMovies from './showMovies';
 import createMoviesMarkup from './createMoviesMarkup';
+import { showLoader, closeLoader } from './loader';
 
 const apiService = new NewsApiService();
 
@@ -26,8 +27,10 @@ export default function onFormSubmit(e) {
   apiService
     .getData()
     .then(data => {
+      showLoader();
       const markup = createMoviesMarkup(data.results);
       showMovies(markup.join(''));
+      closeLoader();
 
       let totalPages = data.total_pages;
       if (totalPages > 500) {
@@ -62,8 +65,10 @@ export default function onFormSubmit(e) {
         apiService.getsearchURL(page, searchTerm);
 
         apiService.getData().then(data => {
+          showLoader();
           const markup = createMoviesMarkup(data.results);
           showMovies(markup.join(''));
+          closeLoader();
         });
         renderListOfPages(page, totalPages);
       });

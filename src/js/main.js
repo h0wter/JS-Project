@@ -6,6 +6,7 @@ import showMovies from './utils/showMovies';
 import { startSearch } from '..';
 import * as moviesCache from './utils/moviesCache';
 const apiService = new NewsApiService();
+import { showLoader, closeLoader } from './utils/loader';
 
 export default class Main {
   constructor() {
@@ -60,9 +61,11 @@ export default class Main {
       apiService.getStartURL(page);
 
       apiService.getData().then(data => {
+        showLoader();
         // startSearch.addMoviesToCache(data.results);
         const markup = createMoviesMarkup(data.results);
         showMovies(markup.join(''));
+        closeLoader();
       });
       renderListOfPages(page, totalPages);
     });
