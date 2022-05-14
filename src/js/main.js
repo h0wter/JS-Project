@@ -37,7 +37,6 @@ export default class Main {
   }
 
   pagination(page, totalPages) {
-    Number(page);
     document.addEventListener('click', e => {
       const classes = e.target.classList;
       const dataAtrrPage = e.target.dataset?.page;
@@ -47,7 +46,7 @@ export default class Main {
       } else if (dataAtrrPage === 'prev') {
         page -= 1;
       } else {
-        page = dataAtrrPage;
+        page = Number(dataAtrrPage);
       }
 
       const isPagination = classes.contains('footer__item');
