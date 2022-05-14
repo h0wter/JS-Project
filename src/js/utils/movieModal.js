@@ -8,9 +8,9 @@ import { getFullGerneNames } from '../getGenreName';
 
 const movieModalElement = document.querySelector('[data-modal]');
 
-if (!localStorage.getItem('watched')) {
+if (!localStorage.getItem('Watched')) {
   const itemsWatchedId = []; // пустий масив для id watched
-  localStorage.setItem('watched', JSON.stringify(itemsWatchedId)); // фальшивий localStorage
+  localStorage.setItem('Watched', JSON.stringify(itemsWatchedId)); // фальшивий localStorage
 }
 
 if (!localStorage.getItem('Queue')) {
@@ -61,7 +61,7 @@ async function showMovieModal(id) {
 
   //------------------------------ДЛЯ КНОПКИ WATCHED---------------------------//
 
-  const savedWatchedId = localStorage.getItem('watched'); // отримую збережені id + перезаписую фальшиву пам'ять
+  const savedWatchedId = localStorage.getItem('Watched'); // отримую збережені id + перезаписую фальшиву пам'ять
   const parseSavedWatchedId = JSON.parse(savedWatchedId); // роблю масив збережених id для перебору
 
   const itemsWatchedId = parseSavedWatchedId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
@@ -90,7 +90,7 @@ async function showMovieModal(id) {
     }
 
     const notRepeatId = itemsWatchedId.filter((id, index, array) => array.indexOf(id) === index); // не записує двічі одне і теж id
-    localStorage.setItem('watched', JSON.stringify(notRepeatId)); // зберігаю в сховище всі id
+    localStorage.setItem('Watched', JSON.stringify(notRepeatId)); // зберігаю в сховище всі id
   }
 
   //--------------------------------ДЛЯ КНОПКИ QUEUE------------------------------------//
@@ -133,7 +133,7 @@ function createMovieModalMarkup(movie) {
 }
 
 function onClose(event) {
-  event.stopPropagation()
+  event.stopPropagation() // відміняє подвійний клік
   if (
     event.target.classList.contains('backdrop') ||
     event.target.classList.contains('modal__btn--close') ||

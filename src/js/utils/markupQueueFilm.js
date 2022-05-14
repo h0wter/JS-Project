@@ -14,7 +14,33 @@ export default function markupQueueFilm() {
   // створюю картки фільмів
   parseSavedQueueId.forEach(e => {
     fetchId(e).then(movie => {
-      refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(movie));
+      // створюю об'єкт з необхідними даними для розмітки
+      let film = {
+        backdrop_path: movie.backdrop_path,
+        poster_path: movie.poster_path,
+        original_title: movie.original_title,
+        id: movie.id,
+        genreNames: movie.genres,
+        shortDate: Number.parseInt(movie.release_date)
+      }
+
+      // дістаю жанри
+      const genres = movie.genres.map(m => m.name)
+      film.genreNames = getGenreName(genres);
+
+      // функція з перевіркою на кількість жанрів 
+      function getGenreName(genres) {
+        if (genres.length === 0) {
+          return;
+        }
+        if (genres.length <= 3) {
+          return `${genres} | ` ;
+        }
+          return `${genres[0]}, ${genres[1]}, Other | `;
+      }
+
+      refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(film));
+      return;
     });
   });
 }
