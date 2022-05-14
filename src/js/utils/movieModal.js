@@ -33,7 +33,6 @@ export function attachOpenModalEvent() {
 
 async function showMovieModal(id) {
   const movie = moviesStorage.getMovieById(id);
-  console.log('chosen movie', movie)
   // let video;
   // if (movie.video) {
   //   video = await getMoviesVideo(id);
