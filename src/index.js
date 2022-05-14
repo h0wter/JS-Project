@@ -7,7 +7,6 @@ import defaultImg from './js/utils/defaultImg';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
 import { attachOpenModalEvent } from './js/utils/movieModal';
-import { addMoviesToCache } from './js/utils/moviesCache';
 import onHomeBtn from './js/utils/onHomeBtn';
 import onLibraryBtn from './js/utils/onLibraryBtn';
 import changeTheme from './js/utils/body-change-theme';
@@ -37,19 +36,7 @@ refs.homeBtn.addEventListener('click', e => {
 refs.homeBtn.addEventListener('click', onHomeBtn);
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
 
-let result = null;
-export function startSearch(data) {
-  // result = await getMovies(API_URL);
-
-  addMoviesToCache(data);
-
-  // const markup = createMoviesMarkup(result.results).join('');
-  // showMovies(markup);
-  attachOpenModalEvent();
-  const video = data.filter(el => {
-    return el.video;
-  });
-}
+attachOpenModalEvent()
 
 // async function onFormSubmit(e) {
 //   e.preventDefault();

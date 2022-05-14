@@ -3,6 +3,7 @@ import NewsApiService from '../api/newsApiService';
 import renderListOfPages from './renderListOfPages';
 import showMovies from './showMovies';
 import createMoviesMarkup from './createMoviesMarkup';
+import moviesStorage from './moviesStorage';
 
 const apiService = new NewsApiService();
 
@@ -28,6 +29,7 @@ export default function onFormSubmit(e) {
     .then(data => {
       const markup = createMoviesMarkup(data.results);
       showMovies(markup.join(''));
+      moviesStorage.addMoviesToStorage(data.results);
 
       let totalPages = data.total_pages;
       if (totalPages > 500) {

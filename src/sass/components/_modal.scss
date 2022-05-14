@@ -6,6 +6,7 @@
     top: 0;
     background: rgba(0, 0, 0, 0.2);
     transition: opacity 300ms linear, visibility 500ms linear;
+    overflow: auto;
   }
 
 .modal {
