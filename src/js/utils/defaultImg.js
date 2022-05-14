@@ -1,9 +1,9 @@
 import IMG_URL from './settings';
 import defaultImg from '../../images/default_img/filmoteka.jpg';
-import movieCardTpl from '../movie-card.hbs';
-import { refs } from './refs';
 
-export const getImgPath = imgPath => (!imgPath ? `${defaultImg}` : `${IMG_URL}${imgPath}`);
+// export function getImgPath(imgPath) {
+//   (!imgPath ? `${defaultImg}` : `${IMG_URL}${imgPath}`)
+// };
 
 // export default function imagePath(results) {
 //   const normalObjs = results.map(element => {
@@ -14,4 +14,12 @@ export const getImgPath = imgPath => (!imgPath ? `${defaultImg}` : `${IMG_URL}${
 //   });
 //   refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(normalObjs));
 // }
+
+export function getImg(poster_path) {
+  if (poster_path) {
+    return `${IMG_URL} + poster_path`;
+  } else {
+    return defaultImg;
+  }
+}
 

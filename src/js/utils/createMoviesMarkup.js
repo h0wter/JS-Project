@@ -1,5 +1,6 @@
 import movieCardTpl from '../movie-card.hbs';
 import { getGenreName } from '../getGenreName';
+import { getImg } from './defaultImg';
 
 export default function createMoviesMarkup(data) {
   return data
@@ -9,6 +10,7 @@ export default function createMoviesMarkup(data) {
         entry.shortDate = '';
         return entry;
       }
+      entry.img = getImg(poster_path);
       entry.shortDate = entry.release_date.slice(0, 4);
       entry.showDivider = entry.genreNames && entry.shortDate;
       return entry;
