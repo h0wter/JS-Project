@@ -48,7 +48,7 @@ export default function onFormSubmit(e) {
         } else if (dataAtrrPage === 'prev') {
           page -= 1;
         } else {
-          page = dataAtrrPage;
+          page = Number(dataAtrrPage);
         }
 
         const isPagination = classes.contains('footer__item');

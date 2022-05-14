@@ -1,11 +1,10 @@
 import refs from './refs';
 import onLibraryBtn from './onLibraryBtn';
-import Main from '../main';
-const main = new Main();
+
 import { hideError } from './onSubmit';
 export default function onHomeBtn() {
   hideError();
-  main.init();
+
   refs.libraryContainer.classList.add('display-none'); //показує пошук
   refs.homeContainer.classList.remove('display-none'); // ховає меню з бібліотеки
   refs.libraryBtn.addEventListener('click', onLibraryBtn); // щоб працювала кнопка бібліотеки

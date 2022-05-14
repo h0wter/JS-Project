@@ -30,6 +30,10 @@ refs.headerLogo.addEventListener('click', e => {
   main.init();
 });
 
+refs.homeBtn.addEventListener('click', e => {
+  main.init();
+});
+
 refs.homeBtn.addEventListener('click', onHomeBtn);
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
 
