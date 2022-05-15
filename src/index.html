@@ -38,24 +38,25 @@
         <div class="header_form-container">
           <form class="header__form" name="form" autocomplete="off" id="form" novalidate>
             <div class="header__form-flex">
-            <label class="form__label">
-              <input
-                class="form__input"
-                type="text"
-                name="search"
-                placeholder="Search film"
-                id="search"
-                onclick="this.value = ''"
-              />
-              
-            </label>
-            <button class="form__btn" type="submit">
-              <svg class="form__icon" width="12" height="12">
-                <use href="./images/symbol-defs.svg#icon-search" />
-              </svg>
-            </button>
+              <label class="form__label">
+                <input
+                  class="form__input"
+                  type="text"
+                  name="search"
+                  placeholder="Search film"
+                  id="search"
+                  onclick="this.value = ''"
+                />
+              </label>
+              <button class="form__btn" type="submit">
+                <svg class="form__icon" width="12" height="12">
+                  <use href="./images/symbol-defs.svg#icon-search" />
+                </svg>
+              </button>
             </div>
-            <p id="input-error" class="input-error  visually-hidden">Search result not successful. Enter the correct movie name and try again</p>
+            <p id="input-error" class="input-error visually-hidden">
+              Search result not successful. Enter the correct movie name and try again
+            </p>
           </form>
         </div>
         <div class="header_buttons-container display-none">
@@ -70,21 +71,26 @@
         </div>
         <div class="toolbar">
           <svg class="theme-switch__icon sun" role="img" aria-label="Иконка солнца">
-              <use href="./images/symbol-defs.svg#icon-sun-fill"></use>
+            <use href="./images/symbol-defs.svg#icon-sun-fill"></use>
           </svg>
           <div class="theme-switch">
-              <div class="theme-switch__control">
-                  <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-                      aria-label="Зміна між світлою і темною темою" />
-                  <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
-                  </label>
-                  <div aria-hidden="true" class="theme-switch__marker"></div>
-              </div>
+            <div class="theme-switch__control">
+              <input
+                class="theme-switch__toggle"
+                type="checkbox"
+                name="theme"
+                id="theme-switch-toggle"
+                aria-label="Зміна між світлою і темною темою"
+              />
+              <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+              </label>
+              <div aria-hidden="true" class="theme-switch__marker"></div>
+            </div>
           </div>
           <svg class="theme-switch__icon moon" aria-label="Иконка луны">
-              <use href="./images/symbol-defs.svg#icon-moon-stroke"></use>
+            <use href="./images/symbol-defs.svg#icon-moon-stroke"></use>
           </svg>
-      </div>
+        </div>
       </div>
     </header>
     <section class="gallery">
@@ -94,51 +100,13 @@
           <div class="arc"></div>
           <div class="arc"></div>
         </div>
-        <ul class="gallery__list">
-          <!-- <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li> -->
-        </ul>
+        <ul class="gallery__list"></ul>
       </div>
     </section>
     <footer class="footer">
       <div class="container">
         <div class="footer__action">
-          
           <ul class="footer__list js-pagination"></ul>
-           
         </div>
         <div class="footer__text">
           <p class="footer__copy">
