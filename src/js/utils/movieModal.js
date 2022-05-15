@@ -6,7 +6,6 @@ import onWatchedBtn from './onWatchedBtn';
 import onQueueBtn from './onQueueBtn';
 import { getFullGerneNames } from '../getGenreName';
 
-
 const movieModalBackdropElement = document.querySelector('[data-modal]');
 
 if (!localStorage.getItem('Watched')) {
@@ -34,7 +33,7 @@ export function attachOpenModalEvent() {
 
 async function showMovieModal(id) {
   const movie = moviesStorage.getMovieById(id);
-  const movieLib = movie; // для бібліотеки 
+  const movieLib = movie; // для бібліотеки
 
   // let video;
   // if (movie.video) {
@@ -49,10 +48,10 @@ async function showMovieModal(id) {
   movieModalBackdropElement.classList.remove('is-hidden');
 
   //disable scroll for background when modal is open
-  const movieModalElement = movieModalBackdropElement.querySelector('.modal')
+  const movieModalElement = movieModalBackdropElement.querySelector('.modal');
   const bodyWidth = refs.body.clientWidth;
   refs.body.style.overflow = 'hidden';
-  refs.body.style.width = bodyWidth + "px";
+  refs.body.style.width = bodyWidth + 'px';
 
   const modalCloseBtn = document.querySelector('[data-modal-close]');
   modalCloseBtn.addEventListener('click', onClose);
@@ -60,7 +59,7 @@ async function showMovieModal(id) {
   document.addEventListener('keydown', onClose);
 
   // ------------------------------НИЖЧЕ ВСЕ ДЛЯ БІБЛІОТЕКИ ----------------------------//
-  
+
   const watchedModalBtn = document.querySelector('.modal__btn--watch');
   const queueModalBtn = document.querySelector('.modal__btn--queue');
 
@@ -75,7 +74,7 @@ async function showMovieModal(id) {
     watchedModalBtn.textContent = 'Add to Watched'; // якщо фільм не збережений, то кнопка зразу показує додати
   } else if (arrayWatchedId.includes(movieLib.id)) {
     watchedModalBtn.textContent = 'Remove From Watched'; // якщо фільм збережений, то кнопка зразу показує видалити
-    watchedModalBtn.classList.add('js-modal-btn') // кнопка міняє колір на активну
+    watchedModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
   }
 
   const itemsWatchedMovie = parseSavedWatchedId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
@@ -89,11 +88,11 @@ async function showMovieModal(id) {
       const indexId = itemsWatchedId.indexOf(movieLib.id); // шукаю індекс id
       const deleteId = itemsWatchedMovie.splice(indexId, 1); // якщо є, то видаляю фільм
       watchedModalBtn.textContent = 'Add to Watched'; // міняю текст в кнопці коли видаляю фільм з переглянутих
-      watchedModalBtn.classList.remove('js-modal-btn') // кнопка знімає колір
+      watchedModalBtn.classList.remove('js-modal-btn'); // кнопка знімає колір
     } else {
       itemsWatchedMovie.push(movieLib); // якщо немає, добавляю в масив
       watchedModalBtn.textContent = 'Remove From Watched'; // міняю текст в кнопці коли додаю фільм в переглянуті
-      watchedModalBtn.classList.add('js-modal-btn') // кнопка міняє колір на активну
+      watchedModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
     }
 
     const notRepeatId = itemsWatchedMovie.filter((id, index, array) => array.indexOf(id) === index); // не записує двічі один і той же фільм
@@ -110,7 +109,7 @@ async function showMovieModal(id) {
     queueModalBtn.textContent = 'Add to Queue'; // якщо фільм збережений, то кнопка зразу показує додати
   } else if (arrayQueueId.includes(movieLib.id)) {
     queueModalBtn.textContent = 'Remove From Queue'; // якщо фільм збережений, то кнопка зразу показує видалити
-    queueModalBtn.classList.add('js-modal-btn') // кнопка міняє колір на активну
+    queueModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
   }
 
   const itemsQueueMovie = parseSavedQueueId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
@@ -124,25 +123,27 @@ async function showMovieModal(id) {
       const indexId = itemsQueueId.indexOf(movieLib.id); // шукаю індекс id
       const deleteId = itemsQueueMovie.splice(indexId, 1); // якщо є, то видаляю його
       queueModalBtn.textContent = 'Add to Queue'; // міняю текст в кнопці коли видаляю фільм з черги
-      queueModalBtn.classList.remove('js-modal-btn') // кнопка стає простою
+      queueModalBtn.classList.remove('js-modal-btn'); // кнопка стає простою
     } else {
       itemsQueueMovie.push(movie); // якщо немає, добавляю в масив
       queueModalBtn.textContent = 'Remove From Watched'; // міняю текст в кнопці коли додаю фільм в чергу
-      queueModalBtn.classList.add('js-modal-btn') // кнопка міняє колір на активну
+      queueModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
     }
 
-    const notRepeatQueueId = itemsQueueMovie.filter((id, index, array) => array.indexOf(id) === index); // не записує двічі одні і тіж фільми
+    const notRepeatQueueId = itemsQueueMovie.filter(
+      (id, index, array) => array.indexOf(id) === index,
+    ); // не записує двічі одні і тіж фільми
     localStorage.setItem('Queue', JSON.stringify(notRepeatQueueId)); // зберігаю в сховище всі фільми
   }
 }
 
 function createMovieModalMarkup(movie) {
-  movie.gerneNamesFull = getFullGerneNames(movie.genre_ids);
+  movie.genreNames = getFullGerneNames(movie.genre_ids);
   return movieModalTpl(movie);
 }
 
 function onClose(event) {
-  event.stopPropagation() // відміняє подвійний клік
+  event.stopPropagation(); // відміняє подвійний клік
   if (
     event.target.classList.contains('backdrop') ||
     event.target.classList.contains('modal__btn--close') ||
@@ -154,7 +155,10 @@ function onClose(event) {
     document.removeEventListener('keydown', onClose);
   }
 
-  if (refs.libraryBtn.classList.contains('current') && refs.watchedBtn.classList.contains('active')) {
+  if (
+    refs.libraryBtn.classList.contains('current') &&
+    refs.watchedBtn.classList.contains('active')
+  ) {
     return onWatchedBtn(); // оновлюю переглянуті фільми
   }
 
