@@ -3,8 +3,10 @@ import createMoviesMarkup from './utils/createMoviesMarkup';
 import NewsApiService from './api/newsApiService';
 import showMovies from './utils/showMovies';
 import moviesStorage from './utils/moviesStorage';
-
+import GetURLFunction from './api/getURLFunction';
 const apiService = new NewsApiService();
+const getURLFunction = new GetURLFunction();
+import pagination from './utils/pagination';
 import { showLoader, closeLoader } from './utils/loader';
 
 export default class Main {
@@ -14,9 +16,9 @@ export default class Main {
 
   init() {
     let page = 1;
-    apiService.getStartURL(page);
+    const url = getURLFunction.getStartURL(page);
     apiService
-      .getData()
+      .getData(url)
       .then(data => {
         showLoader();
         moviesStorage.addMoviesToStorage(data.results);
@@ -33,42 +35,42 @@ export default class Main {
         return { page, totalPages };
       })
       .then(({ page, totalPages }) => {
-        this.pagination(page, totalPages);
+        pagination(page, totalPages);
       });
   }
 
-  pagination(page, totalPages) {
-    document.addEventListener('click', e => {
-      const classes = e.target.classList;
-      const dataAtrrPage = e.target.dataset?.page;
+  // pagination(page, totalPages) {
+  //   document.addEventListener('click', e => {
+  //     const classes = e.target.classList;
+  //     const dataAtrrPage = e.target.dataset?.page;
 
-      if (dataAtrrPage === 'next') {
-        Number((page += 1));
-      } else if (dataAtrrPage === 'prev') {
-        page -= 1;
-      } else {
-        page = Number(dataAtrrPage);
-      }
+  //     if (dataAtrrPage === 'next') {
+  //       Number((page += 1));
+  //     } else if (dataAtrrPage === 'prev') {
+  //       page -= 1;
+  //     } else {
+  //       page = Number(dataAtrrPage);
+  //     }
 
-      const isPagination = classes.contains('footer__item');
+  //     const isPagination = classes.contains('footer__item');
 
-      const shouldRender = isPagination && !classes.contains('active') && page;
+  //     const shouldRender = isPagination && !classes.contains('active') && page;
 
-      if (!shouldRender) {
-        return true;
-      }
+  //     if (!shouldRender) {
+  //       return true;
+  //     }
 
-      apiService.getStartURL(page);
+  //     apiService.getStartURL(page);
 
-      apiService.getData().then(data => {
-        moviesStorage.addMoviesToStorage(data.results);
-        showLoader();
-        // startSearch.addMoviesToCache(data.results);
-        const markup = createMoviesMarkup(data.results);
-        showMovies(markup.join(''));
-        closeLoader();
-      });
-      renderListOfPages(page, totalPages);
-    });
-  }
+  //     apiService.getData().then(data => {
+  //       moviesStorage.addMoviesToStorage(data.results);
+  //       showLoader();
+  //       // startSearch.addMoviesToCache(data.results);
+  //       const markup = createMoviesMarkup(data.results);
+  //       showMovies(markup.join(''));
+  //       closeLoader();
+  //     });
+  //     renderListOfPages(page, totalPages);
+  //   });
+  // }
 }

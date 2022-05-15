@@ -4,12 +4,10 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 export default class NewsApiService {
   constructor() {
     // this.activePage = 1;
-
-    this.url = '';
   }
 
-  getData() {
-    return fetch(this.url)
+  getData(url) {
+    return fetch(url)
       .then(r => {
         if (!r.ok) {
           throw Error(r.statusText);
@@ -25,18 +23,18 @@ export default class NewsApiService {
       });
   }
 
-  getStartURL(activePage) {
-    const startURL = `${BASE_URL}/trending/all/day?sort_by=popularity.desc&api_key=${API_KEY}&page=${activePage}`;
-    this.url = startURL;
-  }
+  // getStartURL(activePage) {
+  //   const startURL = `${BASE_URL}/trending/all/day?sort_by=popularity.desc&api_key=${API_KEY}&page=${activePage}`;
+  //   this.url = startURL;
+  // }
 
-  getGenreURL() {
-    const GENRE_URL = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
-    this.url = GENRE_URL;
-  }
+  // getGenreURL() {
+  //   const GENRE_URL = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
+  //   this.url = GENRE_URL;
+  // }
 
-  getsearchURL(activePage, query) {
-    const searchURL = `${BASE_URL}/search/movie?&api_key=${API_KEY}&page=${activePage}&query=${query}`;
-    this.url = searchURL;
-  }
+  // getsearchURL(activePage, query) {
+  //   const searchURL = `${BASE_URL}/search/movie?&api_key=${API_KEY}&page=${activePage}&query=${query}`;
+  //   this.url = searchURL;
+  // }
 }

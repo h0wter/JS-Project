@@ -5,15 +5,15 @@ import showMovies from './showMovies';
 import createMoviesMarkup from './createMoviesMarkup';
 import moviesStorage from './moviesStorage';
 import { showLoader, closeLoader } from './loader';
-
+import GetURLFunction from '../api/getURLFunction';
 const apiService = new NewsApiService();
+const getURLFunction = new GetURLFunction();
 
 export default function onFormSubmit(e) {
   e.preventDefault();
-
   const isErrorHidden = refs.inputError.classList.contains('visually-hidden');
-
-  const searchTerm = refs.search.value;
+  // const searchTerm = refs.search.value;
+  let searchTerm = e.currentTarget.elements.search.value;
 
   if (!searchTerm.trim()) {
     if (!isErrorHidden) return;
@@ -24,9 +24,10 @@ export default function onFormSubmit(e) {
     hideError();
   }
   let page = 1;
-  apiService.getsearchURL(page, searchTerm);
+  const url = getURLFunction.getSearchURL(page, searchTerm);
+
   apiService
-    .getData()
+    .getData(url)
     .then(data => {
       showLoader();
       const markup = createMoviesMarkup(data.results);
@@ -40,16 +41,18 @@ export default function onFormSubmit(e) {
       }
 
       renderListOfPages(page, totalPages);
-      searchClickedPage(page);
-      return { page, totalPages };
-    })
-    .then(({ page, totalPages }) => {
-      renderListOfPages(page, totalPages);
-    })
 
-    .catch(r => {
-      showError();
+      return { page, totalPages, searchTerm };
+    })
+    .then(({ page, totalPages, searchTerm }) => {
+      console.log('🚀 ~ file: onSubmit.js ~ line 48 ~ .then ~ searchTerm', searchTerm);
+
+      pagination(page, totalPages, searchTerm);
     });
+
+  // .catch(r => {
+  //   showError();
+  // });
 }
 
 function showError() {
@@ -60,28 +63,4 @@ function showError() {
 export function hideError() {
   refs.inputError.classList.add('visually-hidden');
   refs.search.value = '';
-}
-
-function searchClickedPage(page) {
-  document.addEventListener('click', e => {
-    const classes = e.target.classList;
-    const dataAtrrPage = e.target.dataset?.page;
-
-    if (dataAtrrPage === 'next') {
-      Number((page += 1));
-    } else if (dataAtrrPage === 'prev') {
-      page -= 1;
-    } else {
-      page = Number(dataAtrrPage);
-    }
-
-    const isPagination = classes.contains('footer__item');
-
-    const shouldRender = isPagination && !classes.contains('active') && page;
-
-    if (!shouldRender) {
-      return true;
-    }
-    return page;
-  });
 }
