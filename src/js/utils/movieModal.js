@@ -103,7 +103,7 @@ async function showMovieModal(id) {
   //--------------------------------ДЛЯ КНОПКИ QUEUE------------------------------------//
   const savedQueueId = localStorage.getItem('Queue'); // отримую збережені фільми + перезаписую фальшиву пам'ять
   const parseSavedQueueId = JSON.parse(savedQueueId); // роблю масив збережених фільмів для перебору
-  const arrayQueueId = parseSavedWatchedId.map(mov => mov.id); // окремі id
+  const arrayQueueId = parseSavedQueueId.map(mov => mov.id); // окремі id
 
   // перевірка чи є щось в сховищі, чи ні
   if (!arrayQueueId) {
@@ -114,7 +114,7 @@ async function showMovieModal(id) {
   }
 
   const itemsQueueMovie = parseSavedQueueId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
-  const itemsQueueId = itemsWatchedMovie.map(mov => mov.id); // тільки id
+  const itemsQueueId = itemsQueueMovie.map(mov => mov.id); // тільки id
 
   queueModalBtn.addEventListener('click', onQueueModalBtn);
 
