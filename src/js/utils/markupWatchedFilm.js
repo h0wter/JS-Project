@@ -26,15 +26,16 @@ export default function markupWatchedFilm() {
 
       // дістаю жанри
       const genres = movie.genres.map(m => m.name);
-      film.genreNames = getGenreName(genres);
 
+      film.genreNames = getGenreName(genres);
       // функція з перевіркою на кількість жанрів
       function getGenreName(genres) {
         if (genres.length === 0) {
           return;
         }
         if (genres.length <= 3) {
-          return `${genres} | `;
+          let str = genres.join(', ');
+          return `${str} | `;
         }
         return `${genres[0]}, ${genres[1]}, Other | `;
       }
