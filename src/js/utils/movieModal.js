@@ -1,7 +1,7 @@
 import moviesStorage from './moviesStorage';
 import movieModalTpl from '../movie-modal.hbs';
 import refs from './refs';
-// import getMoviesVideo from '../api/fetch-videos';
+import getMoviesVideo from '../api/fetch-videos';
 import onWatchedBtn from './onWatchedBtn';
 import onQueueBtn from './onQueueBtn';
 import { getFullGerneNames } from '../getGenreName';
@@ -33,13 +33,10 @@ export function attachOpenModalEvent() {
 
 async function showMovieModal(id) {
   const movie = moviesStorage.getMovieById(id);
-  // let video;
-  // if (movie.video) {
-  //   video = await getMoviesVideo(id);
-  // }
-  // if (video) {
-  //   movie.trailer = video.data.results[0].key;
-  // }
+
+  if(!movie.video){
+    movie.video = await getMoviesVideo(id)
+  }
   const markup = createMovieModalMarkup(movie);
 
   movieModalBackdropElement.innerHTML = markup;
@@ -144,6 +141,7 @@ function onClose(event) {
     event.keyCode == 27
   ) {
     movieModalBackdropElement.classList.add('is-hidden');
+    refs.modal.innerHTML = ""
     refs.body.style.overflow = 'auto';
     refs.body.style.width = 'auto';
     document.removeEventListener('keydown', onClose);
