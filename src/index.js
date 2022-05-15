@@ -37,22 +37,7 @@ refs.homeBtn.addEventListener('click', e => {
 refs.homeBtn.addEventListener('click', onHomeBtn);
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
 
-// attachOpenModalEvent()
-let result = null;
-export function startSearch(data) {
-  // result = await getMovies(API_URL);
-  showLoader();
-
-  addMoviesToCache(data);
-
-  // const markup = createMoviesMarkup(result.results).join('');
-  // showMovies(markup);
-  closeLoader();
-  attachOpenModalEvent();
-  const video = data.filter(el => {
-    return el.video;
-  });
-}
+attachOpenModalEvent();
 
 // async function onFormSubmit(e) {
 //   e.preventDefault();
