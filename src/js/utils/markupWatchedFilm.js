@@ -3,7 +3,7 @@ import fetchId from './fetchId';
 import movieCardTpl from '../movie-card.hbs';
 
 export default function markupWatchedFilm() {
-  const savedWatchedId = localStorage.getItem('watched'); // отримую збережені id з пам'яті
+  const savedWatchedId = localStorage.getItem('Watched'); // отримую збережені id з пам'яті
   const parseSavedWatchedId = JSON.parse(savedWatchedId); // роблю масив збережених id для перебору
 
   // якщо немає збережених фільмів або немає localStorage то пише, що немає фільмів
@@ -21,22 +21,22 @@ export default function markupWatchedFilm() {
         original_title: movie.original_title,
         id: movie.id,
         genreNames: movie.genres,
-        shortDate: Number.parseInt(movie.release_date)
-      }
+        shortDate: Number.parseInt(movie.release_date),
+      };
 
       // дістаю жанри
-      const genres = movie.genres.map(m => m.name)
+      const genres = movie.genres.map(m => m.name);
       film.genreNames = getGenreName(genres);
 
-      // функція з перевіркою на кількість жанрів 
+      // функція з перевіркою на кількість жанрів
       function getGenreName(genres) {
         if (genres.length === 0) {
           return;
         }
         if (genres.length <= 3) {
-          return `${genres} | ` ;
+          return `${genres} | `;
         }
-          return `${genres[0]}, ${genres[1]}, Other | `;
+        return `${genres[0]}, ${genres[1]}, Other | `;
       }
 
       refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(film));
