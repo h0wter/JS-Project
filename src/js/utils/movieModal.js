@@ -34,9 +34,15 @@ export function attachOpenModalEvent() {
 async function showMovieModal(id) {
   const movie = moviesStorage.getMovieById(id);
 
-  if(!movie.video){
+  if(!movie.video)
+  {
+    try {
     movie.video = await getMoviesVideo(id)
+  } catch (error) {
+    console.log(error.message);
   }
+}
+
   const markup = createMovieModalMarkup(movie);
 
   movieModalBackdropElement.innerHTML = markup;
