@@ -1,4 +1,4 @@
-import { getMovieById } from './moviesCache';
+import moviesStorage from './moviesStorage';
 import movieModalTpl from '../movie-modal.hbs';
 import refs from './refs';
 // import getMoviesVideo from '../api/fetch-videos';
@@ -6,7 +6,7 @@ import onWatchedBtn from './onWatchedBtn';
 import onQueueBtn from './onQueueBtn';
 import { getFullGerneNames } from '../getGenreName';
 
-const movieModalElement = document.querySelector('[data-modal]');
+const movieModalBackdropElement = document.querySelector('[data-modal]');
 
 if (!localStorage.getItem('Watched')) {
   const itemsWatchedId = []; // пустий масив для id watched
@@ -32,7 +32,7 @@ export function attachOpenModalEvent() {
 }
 
 async function showMovieModal(id) {
-  const movie = getMovieById(id);
+  const movie = moviesStorage.getMovieById(id);
   // let video;
   // if (movie.video) {
   //   video = await getMoviesVideo(id);
@@ -42,10 +42,14 @@ async function showMovieModal(id) {
   // }
   const markup = createMovieModalMarkup(movie);
 
-  movieModalElement.innerHTML = markup;
-  movieModalElement.classList.remove('is-hidden');
+  movieModalBackdropElement.innerHTML = markup;
+  movieModalBackdropElement.classList.remove('is-hidden');
+
+  //disable scroll for background when modal is open
+  const movieModalElement = movieModalBackdropElement.querySelector('.modal')
+  const bodyWidth = refs.body.clientWidth;
   refs.body.style.overflow = 'hidden';
-  refs.body.style.marginRight = '16px';
+  refs.body.style.width = bodyWidth + "px";
 
   const modalCloseBtn = document.querySelector('[data-modal-close]');
   modalCloseBtn.addEventListener('click', onClose);
@@ -139,9 +143,9 @@ function onClose(event) {
     event.target.classList.contains('modal__btn--close') ||
     event.keyCode == 27
   ) {
-    movieModalElement.classList.add('is-hidden');
+    movieModalBackdropElement.classList.add('is-hidden');
     refs.body.style.overflow = 'auto';
-    refs.body.style.marginRight = '0px';
+    refs.body.style.width = 'auto';
     document.removeEventListener('keydown', onClose);
   }
 
