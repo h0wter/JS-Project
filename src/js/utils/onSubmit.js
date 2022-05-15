@@ -38,7 +38,7 @@ export default function onFormSubmit(e) {
       }
 
       renderListOfPages(page, totalPages);
-      searchClickedPage();
+      searchClickedPage(page);
       return { page, totalPages };
     })
     .then(({ page, totalPages }) => {
@@ -60,7 +60,7 @@ export function hideError() {
   refs.search.value = '';
 }
 
-function searchClickedPage() {
+function searchClickedPage(page) {
   document.addEventListener('click', e => {
     const classes = e.target.classList;
     const dataAtrrPage = e.target.dataset?.page;
