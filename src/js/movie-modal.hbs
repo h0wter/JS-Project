@@ -1,41 +1,69 @@
-      <div class="modal">
-        <button type="button" class="modal__btn--close" data-modal-close></button>
-        <div class="modal-left">
-          <img class="modal__img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}" />
-        </div>
-        <div class="modal-right">
-          <h1 class="modal__title" data-id={{id}}>{{original_title}}</h1>
-          <ul class="modal-subtitles">
-              <li class="modal-subtitles__item">Vote / Votes</li>
-              <li class="modal-subtitles__item"><span class="modal-vote modal-vote--avg">{{vote_average}}</span> / <span class="modal-vote modal-vote--count">{{vote_count}}</span></li>
-              <li class="modal-subtitles__item">Popularity</li>
-              <li class="modal-subtitles__item">{{popularity}}</li>
-              <li class="modal-subtitles__item">Original Title</li>
-              <li class="modal-subtitles__item">{{original_title}}</li>
-              <li class="modal-subtitles__item">Genre</li>
-              <li class="modal-subtitles__item">{{gerneNamesFull}}</li>
-              <li class="modal-subtitles__item">Trailer</li>
-              <li class="modal-subtitles__item">
-              {{#if video}}
-              <iframe class="info-video-frame" width="200px" src="https://www.youtube.com/embed/{{video}}" frameborder="0"
-              frameborder = '0'
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-              >
-              </iframe>
-              {{else}}
-              No video for this movie
-              {{/if}}
-              </li>
-          </ul>
-          <h2 class="modal-about__title">ABOUT</h2>
-          <p class="modal-about__text">{{overview}}</p>
-          <ul class="modal-buttons__list">
-            <li><button type="button" class="modal__btn modal__btn--watch">Add to Watched</button></li>
-            <li><button type="button" class="modal__btn modal__btn--queue">Add to Queue</button></li> 
+<div class='modal'>
+  <button type='button' class='modal__btn--close' data-modal-close></button>
+  <div class='modal-left'>
+    {{#if poster_path}}
+      <img
+        class='modal__img'
+        src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+        alt='{{original_title}}'
+      />
+    {{else}}
+      <img
+        class='modal__img'
+        src='https://raw.githubusercontent.com/h0wter/JS-Project/main/src/images/default_img/filmoteka.jpg'
+        alt='{{original_title}}'
+      />
+    {{/if}}
+  </div>
+  <div class='modal-right'>
+    <h1 class='modal__title' data-id={{id}}>{{#if
+        original_title
+      }}{{original_title}}{{/if}}{{original_name}}</h1>
+    <ul class='modal-subtitles'>
+      <li class='modal-subtitles__item'>Vote / Votes</li>
+      <li class='modal-subtitles__item'><span
+          class='modal-vote modal-vote--avg'
+        >{{vote_average}}</span>
+        /
+        <span class='modal-vote modal-vote--count'>{{vote_count}}</span></li>
+      <li class='modal-subtitles__item'>Popularity</li>
+      <li class='modal-subtitles__item'>{{popularity}}</li>
+      <li class='modal-subtitles__item'>Original Title</li>
+      <li class='modal-subtitles__item'>{{#if
+          original_title
+        }}{{original_title}}{{/if}}{{original_name}}</li>
+      {{#if gerneNamesFull}}
+        <li class='modal-subtitles__item'>Genre</li>
+        <li class='modal-subtitles__item'>{{gerneNamesFull}}</li>
+      {{/if}}
+      <li class='modal-subtitles__item'>Trailer</li>
+      <li class='modal-subtitles__item'>
+        {{#if video}}
+          <iframe
+            class='info-video-frame'
+            width='200px'
+            src='https://www.youtube.com/embed/{{video}}'
+            frameborder='0'
+            frameborder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+            allowfullscreen
+          >
+          </iframe>
+        {{else}}
+          No video for this movie
+        {{/if}}
+      </li>
 
-            {{!-- {{#if video}}
+    </ul>
+    <h2 class='modal-about__title'>ABOUT</h2>
+    <p class='modal-about__text'>{{overview}}</p>
+    <ul class='modal-buttons__list'>
+      <li><button type='button' class='modal__btn modal__btn--watch'>Add to Watched</button></li>
+      <li><button type='button' class='modal__btn modal__btn--queue'>Add to Queue</button></li>
+
+      {{!-- {{#if video}}
             <li><button type="button" class="modal__btn modal__btn--player"><a class="player-link" href="https://www.youtube.com/watch?v={{trailer}}" target="_blank" >Trailer</a></button></li>
             {{/if}}  --}}
-          </ul>
-        </div>
-      </div>
+    </ul>
+  </div>
+</div>
