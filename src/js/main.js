@@ -18,16 +18,18 @@ export default class Main {
     apiService
       .getData()
       .then(data => {
+        showLoader();
         moviesStorage.addMoviesToStorage(data.results);
         const markup = createMoviesMarkup(data.results);
         showMovies(markup.join(''));
-
+        closeLoader();
         let totalPages = data.total_pages;
         if (totalPages > 500) {
           totalPages = 500;
         }
 
         renderListOfPages(page, totalPages);
+
         return { page, totalPages };
       })
       .then(({ page, totalPages }) => {
