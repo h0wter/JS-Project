@@ -12,8 +12,10 @@
               <li class="modal-subtitles__item">{{popularity}}</li>
               <li class="modal-subtitles__item">Original Title</li>
               <li class="modal-subtitles__item">{{#if original_title}}{{original_title}}{{/if}}{{original_name}}</li>
+              {{#if gerneNamesFull}}
               <li class="modal-subtitles__item">Genre</li>
               <li class="modal-subtitles__item">{{gerneNamesFull}}</li>
+              {{/if}}
           </ul>
           <h2 class="modal-about__title">ABOUT</h2>
           <p class="modal-about__text">{{overview}}</p>
