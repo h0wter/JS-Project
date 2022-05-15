@@ -2,6 +2,8 @@ const refs = {
   openModalBtn: document.querySelector('[data-modal-open]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal]'),
+  backdrop: document.querySelector('.backdrop'),
+  body: document.querySelector('body'),
   galleryList: document.querySelector('.gallery__list'),
   form: document.getElementById('form'),
   search: document.getElementById('search'),
@@ -14,6 +16,9 @@ const refs = {
   paginationEl: document.querySelector('.footer__action'),
   headerEl: document.querySelector('header'),
   inputError: document.getElementById('input-error'),
+  upBtn: document.querySelector('.upbtn'),
+  pagination: document.querySelector('.js-pagination'),
+  headerLogo: document.querySelector('.header__logo'),
 };
 
 export default refs;

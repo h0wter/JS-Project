@@ -36,7 +36,8 @@
         </nav>
 
         <div class="header_form-container">
-          <form class="header__form" name="form" autocomplete="on" id="form" novalidate>
+          <form class="header__form" name="form" autocomplete="off" id="form" novalidate>
+            <div class="header__form-flex">
             <label class="form__label">
               <input
                 class="form__input"
@@ -46,13 +47,15 @@
                 id="search"
                 onclick="this.value = ''"
               />
-              <p id="input-error" class="input-error">Введите корректный запрос</p>
+              
             </label>
             <button class="form__btn" type="submit">
               <svg class="form__icon" width="12" height="12">
                 <use href="./images/symbol-defs.svg#icon-search" />
               </svg>
             </button>
+            </div>
+            <p id="input-error" class="input-error  visually-hidden">Search result not successful. Enter the correct movie name and try again</p>
           </form>
         </div>
         <div class="header_buttons-container display-none">
@@ -86,6 +89,11 @@
     </header>
     <section class="gallery">
       <div class="container">
+        <div class="loading">
+          <div class="arc"></div>
+          <div class="arc"></div>
+          <div class="arc"></div>
+        </div>
         <ul class="gallery__list">
           <!-- <li class="gallery__card">
             <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
@@ -144,7 +152,7 @@
       </div>
     </footer>
     <div class="backdrop is-hidden" data-modal></div>
-    <button class="upbtn notVisible" type="button">
+    <button class="upbtn notvisible arrowspin" type="button">
       <svg class="uparrow">
         <use href="./images/symbol-defs.svg#icon-up-arrow"></use>
       </svg>

@@ -1,19 +1,14 @@
 import refs from "./refs";
 import onQueueBtn from "./onQueueBtn";
+import markupWatchedFilm from "./markupWatchedFilm";
 
 export default function onWatchedBtn() {
     refs.galleryList.innerHTML = '';
     refs.watchedBtn.removeEventListener('click', onWatchedBtn); //виключаю слухач
     refs.queueBtn.addEventListener('click', onQueueBtn); //включаю на неактивну кнопку
-    refs.queueBtn.classList.remove('active')
-    refs.watchedBtn.classList.add('active');
-
-    //якщо не буде переглянутих фільмів
-    refs.paginationEl.classList.add('display-none') // немає фільмів, то не потрібна пагінація
-    refs.galleryList.innerHTML = noWatched(); // пишу що нічого не подивилися ще
-}
-
-// повідомлення, якщо немає фільмів
-function noWatched() {
-    return '<h2 class="js-library-empty">hey...no movies watched</h2>'
+    refs.queueBtn.classList.remove('active') // вимикаю стилі з неактивної кнопки
+    refs.watchedBtn.classList.add('active'); // додаю стилі на активну кнопку
+    refs.paginationEl.classList.add('display-none') // не потрібна пагінація, бо такі фільми зберігає більше 20
+    
+    markupWatchedFilm()
 }
