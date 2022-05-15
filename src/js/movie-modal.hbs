@@ -1,7 +1,11 @@
       <div class="modal">
         <button type="button" class="modal__btn--close" data-modal-close></button>
         <div class="modal-left">
+          {{#if poster_path}}
           <img class="modal__img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}" />
+          {{else}}
+          <img class="modal__img" src="https://raw.githubusercontent.com/h0wter/JS-Project/main/src/images/default_img/filmoteka.jpg" alt="{{original_title}}" />
+          {{/if}}
         </div>
         <div class="modal-right">
           <h1 class="modal__title" data-id={{id}}>{{#if original_title}}{{original_title}}{{/if}}{{original_name}}</h1>
