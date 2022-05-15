@@ -5,6 +5,7 @@ import showMovies from './utils/showMovies';
 import moviesStorage from './utils/moviesStorage';
 
 const apiService = new NewsApiService();
+import { showLoader, closeLoader } from './utils/loader';
 
 export default class Main {
   constructor() {
@@ -20,7 +21,7 @@ export default class Main {
         moviesStorage.addMoviesToStorage(data.results);
         const markup = createMoviesMarkup(data.results);
         showMovies(markup.join(''));
-        
+
         let totalPages = data.total_pages;
         if (totalPages > 500) {
           totalPages = 500;
@@ -59,8 +60,11 @@ export default class Main {
 
       apiService.getData().then(data => {
         moviesStorage.addMoviesToStorage(data.results);
+        showLoader();
+        // startSearch.addMoviesToCache(data.results);
         const markup = createMoviesMarkup(data.results);
         showMovies(markup.join(''));
+        closeLoader();
       });
       renderListOfPages(page, totalPages);
     });

@@ -13,8 +13,9 @@ import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
+import { onScroll, goUp } from './js/utils/uparrow';
+import { closeLoader, showLoader } from './js/utils/loader';
 import onFormSubmit from './js/utils/onSubmit';
-import { onScroll, goUp, refUpbtn } from './js/utils/uparrow';
 export let genreList;
 
 getGenre()
@@ -36,7 +37,22 @@ refs.homeBtn.addEventListener('click', e => {
 refs.homeBtn.addEventListener('click', onHomeBtn);
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
 
-attachOpenModalEvent()
+// attachOpenModalEvent()
+let result = null;
+export function startSearch(data) {
+  // result = await getMovies(API_URL);
+  showLoader();
+
+  addMoviesToCache(data);
+
+  // const markup = createMoviesMarkup(result.results).join('');
+  // showMovies(markup);
+  closeLoader();
+  attachOpenModalEvent();
+  const video = data.filter(el => {
+    return el.video;
+  });
+}
 
 // async function onFormSubmit(e) {
 //   e.preventDefault();
@@ -59,4 +75,4 @@ attachOpenModalEvent()
 //   }
 // }
 addEventListener('scroll', onScroll);
-refUpbtn.addEventListener('click', goUp);
+refs.upBtn.addEventListener('click', goUp);
