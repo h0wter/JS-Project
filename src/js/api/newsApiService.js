@@ -26,7 +26,7 @@ export default class NewsApiService {
   }
 
   getStartURL(activePage) {
-    const startURL = `${BASE_URL}/trending/all/day?sort_by=popularity.desc&api_key=${API_KEY}&page=${activePage}`;
+    const startURL = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=${activePage}`;
     this.url = startURL;
   }
 

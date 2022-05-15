@@ -1,19 +1,18 @@
-<li class='gallery__card' data-action='https://image.tmdb.org/t/p/w500{{backdrop_path}}'>
-  <div class='movie__body'>
-    <img
-      class='gallery__img'
-      src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+  <li class='gallery__card' data-action='https://image.tmdb.org/t/p/w500{{backdrop_path}}'>
+    <div class='movie__body'>
+      {{#if poster_path}}
+      <img class="gallery__img" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
       alt='{{original_title}}'
       class='movie-image'
       data-action={{id}}
-    />
-  </div>
-  <div class='gallery__thumb'>
-    <h3 class='gallery__name'>&nbsp;{{#if
-        original_title
-      }}{{original_title}}{{/if}}{{original_name}}</h3>
-    <p class='movie-id gallery__description'>&nbsp;{{genreNames}}{{#if
-        showDivider
-      }}&nbsp;|&nbsp;{{/if}}{{shortDate}}</p>
-  </div>
-</li>
+      />
+      {{else}}
+      <img class="gallery__img" src="https://raw.githubusercontent.com/h0wter/JS-Project/main/src/images/default_img/filmoteka.jpg" alt="{{original_title}}" class='movie-image'
+      data-action={{id}} />
+      {{/if}}
+    </div>
+    <div class='gallery__thumb'>
+      <h3 class='gallery__name'>&nbsp;{{#if original_title}}{{original_title}}{{/if}}{{original_name}}</h3>
+      <p class='movie-id gallery__description'>&nbsp;{{genreNames}}{{#if showDivider}}&nbsp;|&nbsp;{{/if}}{{shortDate}}</p>
+    </div>
+  </li>
