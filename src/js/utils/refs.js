@@ -17,6 +17,7 @@ const refs = {
   headerEl: document.querySelector('header'),
   inputError: document.getElementById('input-error'),
   searcGenreForm: document.querySelector('.select'),
+  upBtn: document.querySelector('.upbtn'),
   pagination: document.querySelector('.js-pagination'),
   headerLogo: document.querySelector('.header__logo'),
  };

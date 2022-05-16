@@ -5,19 +5,18 @@ import './js/utils/onSearchByGenre';
 import Main from './js/main';
 import { API_URL, searchURL } from './js/utils/settings.js';
 import getMovies from './js/api/fetch-api';
-import defaultImg from './js/utils/defaultImg';
 import createMoviesMarkup from './js/utils/createMoviesMarkup';
 import showMovies from './js/utils/showMovies';
 import { attachOpenModalEvent } from './js/utils/movieModal';
-import { addMoviesToCache } from './js/utils/moviesCache';
 import onHomeBtn from './js/utils/onHomeBtn';
 import onLibraryBtn from './js/utils/onLibraryBtn';
 import changeTheme from './js/utils/body-change-theme';
 import refs from './js/utils/refs';
 import Notiflix from 'notiflix';
 import { getGenre } from './js/getGenre.js';
+import { onScroll, goUp } from './js/utils/uparrow';
+import { closeLoader, showLoader } from './js/utils/loader';
 import onFormSubmit from './js/utils/onSubmit';
-import { onScroll, goUp, refUpbtn } from './js/utils/uparrow';
 export let genreList;
 
 getGenre()
@@ -32,22 +31,14 @@ refs.headerLogo.addEventListener('click', e => {
   main.init();
 });
 
+refs.homeBtn.addEventListener('click', e => {
+  main.init();
+});
+
 refs.homeBtn.addEventListener('click', onHomeBtn);
 refs.libraryBtn.addEventListener('click', onLibraryBtn);
 
-let result = null;
-export function startSearch(data) {
-  // result = await getMovies(API_URL);
-
-  addMoviesToCache(data);
-
-  // const markup = createMoviesMarkup(result.results).join('');
-  // showMovies(markup);
-  attachOpenModalEvent();
-  const video = data.filter(el => {
-    return el.video;
-  });
-}
+attachOpenModalEvent();
 
 // async function onFormSubmit(e) {
 //   e.preventDefault();
@@ -70,4 +61,4 @@ export function startSearch(data) {
 //   }
 // }
 addEventListener('scroll', onScroll);
-refUpbtn.addEventListener('click', goUp);
+refs.upBtn.addEventListener('click', goUp);
