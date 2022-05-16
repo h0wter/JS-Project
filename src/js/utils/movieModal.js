@@ -5,7 +5,7 @@ import getMoviesVideo from '../api/fetch-videos';
 import onWatchedBtn from './onWatchedBtn';
 import onQueueBtn from './onQueueBtn';
 import { getFullGerneNames } from '../getGenreName';
-import  {createTrailerModal} from '../utils/trailerBtn'
+import { createTrailerModal } from '../utils/trailerBtn';
 
 const movieModalBackdropElement = document.querySelector('[data-modal]');
 
@@ -33,20 +33,19 @@ export function attachOpenModalEvent() {
 }
 
 async function showMovieModal(id) {
-   const movie = await moviesStorage.getMovieById(id);
+  const movie = await moviesStorage.getMovieById(id);
   const movieLib = movie; // для бібліотеки
-const video = await getMoviesVideo(id)
+  const video = await getMoviesVideo(id);
 
-  if(video)
-  {
-    movie.video = video
-}
+  if (video) {
+    movie.video = video;
+  }
 
   const markup = createMovieModalMarkup(movie);
 
   movieModalBackdropElement.innerHTML = markup;
   movieModalBackdropElement.classList.remove('is-hidden');
-  if(movie.video) createTrailerModal(movie);
+  if (movie.video) createTrailerModal(movie);
 
   //disable scroll for background when modal is open
   const movieModalElement = movieModalBackdropElement.querySelector('.modal');
@@ -69,7 +68,7 @@ const video = await getMoviesVideo(id)
   const savedWatchedId = localStorage.getItem('Watched'); // отримую збережені фільми + перезаписую фальшиву пам'ять
   const parseSavedWatchedId = JSON.parse(savedWatchedId); // роблю масив збережених фільмів для перебору
   const arrayWatchedId = parseSavedWatchedId.map(mov => mov.id); // окремі id
-  
+
   // перевірка чи є щось в сховищі, чи ні
   if (!arrayWatchedId) {
     watchedModalBtn.textContent = 'Add to Watched'; // якщо фільм не збережений, то кнопка зразу показує додати
@@ -78,7 +77,6 @@ const video = await getMoviesVideo(id)
     watchedModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
   }
 
-  
   watchedModalBtn.addEventListener('click', onWatchedModalBtn);
 
   function onWatchedModalBtn() {
@@ -113,7 +111,6 @@ const video = await getMoviesVideo(id)
     queueModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
   }
 
-
   queueModalBtn.addEventListener('click', onQueueModalBtn);
 
   function onQueueModalBtn() {
@@ -128,7 +125,7 @@ const video = await getMoviesVideo(id)
       queueModalBtn.classList.remove('js-modal-btn'); // кнопка стає простою
     } else {
       itemsQueueMovie.push(movie); // якщо немає, добавляю в масив
-      queueModalBtn.textContent = 'Remove From Watched'; // міняю текст в кнопці коли додаю фільм в чергу
+      queueModalBtn.textContent = 'Remove From Queue'; // міняю текст в кнопці коли додаю фільм в чергу
       queueModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
     }
 
@@ -152,7 +149,7 @@ function onClose(event) {
     event.keyCode == 27
   ) {
     movieModalBackdropElement.classList.add('is-hidden');
-    refs.modal.innerHTML = ""
+    refs.modal.innerHTML = '';
     refs.body.style.overflow = 'auto';
     refs.body.style.width = 'auto';
     document.removeEventListener('keydown', onClose);
@@ -165,12 +162,7 @@ function onClose(event) {
     return onWatchedBtn(); // оновлюю переглянуті фільми
   }
 
-  if (
-    refs.libraryBtn.classList.contains('current') &&
-    refs.queueBtn.classList.contains('active')
-  ) {
+  if (refs.libraryBtn.classList.contains('current') && refs.queueBtn.classList.contains('active')) {
     return onQueueBtn(); // оновлюю чергу фільмів
   }
 }
-
-
