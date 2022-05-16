@@ -5,6 +5,7 @@ import getMoviesVideo from '../api/fetch-videos';
 import onWatchedBtn from './onWatchedBtn';
 import onQueueBtn from './onQueueBtn';
 import { getFullGerneNames } from '../getGenreName';
+import { createTrailerModal } from '../utils/trailerBtn';
 
 const movieModalBackdropElement = document.querySelector('[data-modal]');
 
@@ -32,21 +33,19 @@ export function attachOpenModalEvent() {
 }
 
 async function showMovieModal(id) {
-  const movie = moviesStorage.getMovieById(id);
+  const movie = await moviesStorage.getMovieById(id);
   const movieLib = movie; // для бібліотеки
+  const video = await getMoviesVideo(id);
 
-  if (!movie.video) {
-    try {
-      movie.video = await getMoviesVideo(id);
-    } catch (error) {
-      console.log(error.message);
-    }
+  if (video) {
+    movie.video = video;
   }
 
   const markup = createMovieModalMarkup(movie);
 
   movieModalBackdropElement.innerHTML = markup;
   movieModalBackdropElement.classList.remove('is-hidden');
+  if (movie.video) createTrailerModal(movie);
 
   //disable scroll for background when modal is open
   const movieModalElement = movieModalBackdropElement.querySelector('.modal');
