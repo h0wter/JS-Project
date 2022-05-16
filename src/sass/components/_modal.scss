@@ -103,12 +103,12 @@
   }
 }
 
-.modal__btn:hover,
-.modal__btn:focus {
-  background-color: #fb7c22;
-  color: #ffffff;
-  border: none;
-}
+.modal__btn:hover{
+    background-color: #fb7c22;
+    color: #ffffff;
+    border: none;
+  }
+// .modal__btn:focus 
 
 .js-modal-btn {
   background-color: #ff6b01;

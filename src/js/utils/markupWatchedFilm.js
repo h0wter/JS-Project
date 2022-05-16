@@ -10,11 +10,38 @@ export default function markupWatchedFilm() {
     return (refs.galleryList.innerHTML = noWatched());
   }
 
-  const film = parseSavedWatchedMovie.map(e => movieCardTpl(e)).join('');
-  refs.galleryList.insertAdjacentHTML('beforeend', film);
+  parseSavedWatchedMovie.forEach(movie => {
+    // створюю об'єкт з необхідними даними для розмітки
+      let film = {
+        backdrop_path: movie.backdrop_path,
+        poster_path: movie.poster_path,
+        original_title: movie.original_title,
+        id: movie.id,
+        genreNames: movie.genreNames,
+        shortDate: Number.parseInt(movie.release_date)
+    }
+
+    const genre = movie.genreNames;
+    const genres = genre.split(','); // створюю масив жанрів
+    film.genreNames = getGenreName(genres);
+
+    // перевірка на кількість жанрів
+    function getGenreName(genres) {
+      if (!genres.length || genres.length === 0) {
+        return ;
+      }
+      if (genres.length <= 3) {
+      return `${genres} | `;
+      }
+      return `${genres[0]}, ${genres[1]}, Other | `;
+    }
+    
+    refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(film)); // розмітка
+
+  });
 }
 
 // повідомлення, якщо немає фільмів
 function noWatched() {
-  return '<h2 class="js-library-empty">hey...no movies watched</h2>';
+  return '<h2 class="js-library-empty">no movies watched</h2>';
 }
