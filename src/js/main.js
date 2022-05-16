@@ -6,9 +6,9 @@ import moviesStorage from './utils/moviesStorage';
 import GetURLFunction from './api/getURLFunction';
 const apiService = new NewsApiService();
 const getURLFunction = new GetURLFunction();
-import pagination from './utils/pagination';
+import Pagination from './utils/pagination';
 import { showLoader, closeLoader } from './utils/loader';
-
+const pagination = new Pagination();
 export default class Main {
   constructor() {
     this.init();
@@ -17,6 +17,7 @@ export default class Main {
   init() {
     let page = 1;
     const url = getURLFunction.getStartURL(page);
+    pagination.search = false;
     apiService
       .getData(url)
       .then(data => {
@@ -35,7 +36,7 @@ export default class Main {
         return { page, totalPages };
       })
       .then(({ page, totalPages }) => {
-        pagination(page, totalPages);
+        pagination.init(page, totalPages);
       });
   }
 

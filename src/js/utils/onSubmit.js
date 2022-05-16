@@ -6,15 +6,17 @@ import createMoviesMarkup from './createMoviesMarkup';
 import moviesStorage from './moviesStorage';
 import { showLoader, closeLoader } from './loader';
 import GetURLFunction from '../api/getURLFunction';
+import Pagination from './pagination';
 const apiService = new NewsApiService();
 const getURLFunction = new GetURLFunction();
+const pagination = new Pagination();
 
 export default function onFormSubmit(e) {
   e.preventDefault();
   const isErrorHidden = refs.inputError.classList.contains('visually-hidden');
   // const searchTerm = refs.search.value;
   let searchTerm = e.currentTarget.elements.search.value;
-
+  pagination.search = searchTerm;
   if (!searchTerm.trim()) {
     if (!isErrorHidden) return;
     showError();
@@ -42,12 +44,12 @@ export default function onFormSubmit(e) {
 
       renderListOfPages(page, totalPages);
 
-      return { page, totalPages, searchTerm };
+      return { page, totalPages };
     })
-    .then(({ page, totalPages, searchTerm }) => {
+    .then(({ page, totalPages }) => {
       console.log('🚀 ~ file: onSubmit.js ~ line 48 ~ .then ~ searchTerm', searchTerm);
 
-      pagination(page, totalPages, searchTerm);
+      pagination.init(page, totalPages);
     });
 
   // .catch(r => {
