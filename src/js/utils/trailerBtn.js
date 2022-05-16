@@ -1,19 +1,17 @@
 import refs from './refs';
 
 function createTrailerModal(movie) {
-    if(!movie)return 
-    const modalBtnPlayer = document.querySelector('.modal__btn--player')
-    modalBtnPlayer.addEventListener('click', () => {
-        onCreateMarkup(movie)
-    })
-} 
+  if (!movie) return;
+  const modalBtnPlayer = document.querySelector('.modal__btn--player');
+  modalBtnPlayer.addEventListener('click', () => {
+    onCreateMarkup(movie);
+  });
+}
 
 function onCreateMarkup(movie) {
-  
-    const modalTrailer = document.querySelector('.backdrop-trailer');
-    modalTrailer.classList.remove("is-hidden")
-    modalTrailer.innerHTML = 
-     `
+  const modalTrailer = document.querySelector('.backdrop-trailer');
+  modalTrailer.classList.remove('is-hidden');
+  modalTrailer.innerHTML = `
     <div class="modal-trailer"> 
     <iframe
       class='info-video-frame'
@@ -25,26 +23,24 @@ function onCreateMarkup(movie) {
     >
     </iframe>
     </div>
-    `
-    modalTrailer.addEventListener('click', onCloseModal)
-    document.addEventListener('keydown', onCloseModal)
+    `;
+  modalTrailer.addEventListener('click', onCloseModal);
+  document.addEventListener('keydown', onCloseModal);
 }
 
 function onCloseModal(e) {
-    const modalTrailer = document.querySelector('.backdrop-trailer');
-     if(e.target.classList.contains('backdrop-trailer')){
-        modalTrailer.classList.add("is-hidden")
-        modalTrailer.innerHTML = ""
-    }
+  const modalTrailer = document.querySelector('.backdrop-trailer');
+  if (e.target.classList.contains('backdrop-trailer')) {
+    modalTrailer.classList.add('is-hidden');
+    modalTrailer.innerHTML = '';
+  }
 
-    if(e.key === 'Escape'){
-        modalTrailer.classList.add("is-hidden")
-        modalTrailer.innerHTML = ""
-    }
-    modalTrailer.removeEventListener('click', onCloseModal)
-    document.removeEventListener('keydown', onCloseModal)
+  if (e.key === 'Escape') {
+    modalTrailer.classList.add('is-hidden');
+    modalTrailer.innerHTML = '';
+  }
+  modalTrailer.removeEventListener('click', onCloseModal);
+  document.removeEventListener('keydown', onCloseModal);
 }
 
-
-
-export {createTrailerModal}
+export { createTrailerModal };
