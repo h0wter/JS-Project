@@ -33,33 +33,27 @@ export default class Pagination {
         return true;
       }
       debugger;
-      console.log('search', search);
+      document.removeEventListener;
       if (this.search) {
         const url = getURLFunction.getSearchURL(page, this.search);
-
-        apiService.getData(url).then(data => {
-          showLoader();
-          // startSearch.addMoviesToCache(data.results);
-          const markup = createMoviesMarkup(data.results);
-          showMovies(markup.join(''));
-          closeLoader();
-        });
-
-        renderListOfPages(page, totalPages);
+        sendToApi(url, page, totalPages);
       } else {
         const url = getURLFunction.getStartURL(page);
-
-        apiService.getData(url).then(data => {
-          showLoader();
-          // startSearch.addMoviesToCache(data.results);
-          const markup = createMoviesMarkup(data.results);
-          showMovies(markup.join(''));
-          closeLoader();
-        });
-        renderListOfPages(page, totalPages);
+        sendToApi(url, page, totalPages);
       }
     });
   }
+}
+
+function sendToApi(url, page, totalPages) {
+  apiService.getData(url).then(data => {
+    showLoader();
+    // startSearch.addMoviesToCache(data.results);
+    const markup = createMoviesMarkup(data.results);
+    showMovies(markup.join(''));
+    closeLoader();
+  });
+  renderListOfPages(page, totalPages);
 }
 
 // .catch(r => {
