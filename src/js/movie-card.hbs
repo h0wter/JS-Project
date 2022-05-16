@@ -13,6 +13,6 @@
     </div>
     <div class='gallery__thumb'>
       <h3 class='gallery__name'>&nbsp;{{#if original_title}}{{original_title}}{{/if}}{{original_name}}</h3>
-      <p class='movie-id gallery__description'>&nbsp;{{genreNames}}{{#if showDivider}}&nbsp;|&nbsp;{{/if}}{{shortDate}}</p>
+      <p class='movie-id gallery__description'>&nbsp;{{genreNames}}{{#if showDivider}}&nbsp;|&nbsp;{{/if}}{{shortDate}}{{#if vote_average_lib}}<span class="vote-average js-vote">&nbsp;{{vote_average_lib}}&nbsp;</span>{{/if}}</p>
     </div>
   </li>
