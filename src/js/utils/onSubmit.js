@@ -23,6 +23,7 @@ export default function onFormSubmit(e) {
   if (searchTerm.trim()) {
     hideError();
   }
+  
   let page = 1;
   apiService.getsearchURL(page, searchTerm);
   apiService
@@ -35,6 +36,7 @@ export default function onFormSubmit(e) {
       closeLoader();
 
       let totalPages = data.total_pages;
+      localStorage.setItem ("Totalpages", totalPages);
       if (totalPages > 500) {
         totalPages = 500;
       }
@@ -59,7 +61,7 @@ function showError() {
 
 export function hideError() {
   refs.inputError.classList.add('visually-hidden');
-  refs.search.value = '';
+  // refs.search.value = '';
 }
 
 function searchClickedPage(page) {
