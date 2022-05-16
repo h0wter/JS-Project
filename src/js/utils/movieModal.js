@@ -35,21 +35,18 @@ export function attachOpenModalEvent() {
 async function showMovieModal(id) {
    const movie = await moviesStorage.getMovieById(id);
   const movieLib = movie; // для бібліотеки
+const video = await getMoviesVideo(id)
 
-  if(!movie.video)
+  if(video)
   {
-    try {
-    movie.video = await getMoviesVideo(id)
-  } catch (error) {
-    console.log(error.message);
-  }
+    movie.video = video
 }
 
   const markup = createMovieModalMarkup(movie);
 
   movieModalBackdropElement.innerHTML = markup;
   movieModalBackdropElement.classList.remove('is-hidden');
-  createTrailerModal(movie);
+  if(movie.video) createTrailerModal(movie);
 
   //disable scroll for background when modal is open
   const movieModalElement = movieModalBackdropElement.querySelector('.modal');

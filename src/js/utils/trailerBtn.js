@@ -1,6 +1,7 @@
 import refs from './refs';
 
 function createTrailerModal(movie) {
+    if(!movie)return 
     const modalBtnPlayer = document.querySelector('.modal__btn--player')
     modalBtnPlayer.addEventListener('click', () => {
         onCreateMarkup(movie)

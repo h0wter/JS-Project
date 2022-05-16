@@ -8,7 +8,8 @@ export default async function getMoviesVideo(id) {
     // console.log(result)
     const arrays = result.data.results
     const arrTrue = arrays.find(option => option.type === "Trailer")
-    return arrTrue.key;
+    if(arrTrue)return arrTrue.key;
+    return false
   }
 
 //   https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
