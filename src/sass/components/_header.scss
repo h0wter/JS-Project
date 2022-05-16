@@ -16,6 +16,18 @@
   }
 }
 
+.js-header{
+  padding-bottom: 35px;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 45px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding-bottom: 47px;
+  }
+}
+
 .header__nav{
   display: flex;
   justify-content: space-between;
@@ -171,11 +183,6 @@
     position: absolute;
   }
 }
-
-
-
-
-
 
 .display-none {
   display: none;
