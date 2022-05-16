@@ -79,6 +79,12 @@
   pointer-events: none;
 }
 
+.footer-backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .modal__btn {
   background-color: transparent;
   border: 1px solid #000000;
