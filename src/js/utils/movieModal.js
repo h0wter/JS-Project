@@ -70,7 +70,7 @@ async function showMovieModal(id) {
   const savedWatchedId = localStorage.getItem('Watched'); // отримую збережені фільми + перезаписую фальшиву пам'ять
   const parseSavedWatchedId = JSON.parse(savedWatchedId); // роблю масив збережених фільмів для перебору
   const arrayWatchedId = parseSavedWatchedId.map(mov => mov.id); // окремі id
-
+  
   // перевірка чи є щось в сховищі, чи ні
   if (!arrayWatchedId) {
     watchedModalBtn.textContent = 'Add to Watched'; // якщо фільм не збережений, то кнопка зразу показує додати
@@ -79,12 +79,13 @@ async function showMovieModal(id) {
     watchedModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
   }
 
-  const itemsWatchedMovie = parseSavedWatchedId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
-  const itemsWatchedId = itemsWatchedMovie.map(mov => mov.id); // тільки id
-
+  
   watchedModalBtn.addEventListener('click', onWatchedModalBtn);
 
   function onWatchedModalBtn() {
+    const itemsWatchedMovie = parseSavedWatchedId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
+    const itemsWatchedId = itemsWatchedMovie.map(mov => mov.id); // тільки id
+
     if (itemsWatchedId.includes(movieLib.id)) {
       // якщо id вже є в масиві, то фільм видаляє з масиву
       const indexId = itemsWatchedId.indexOf(movieLib.id); // шукаю індекс id
@@ -96,9 +97,8 @@ async function showMovieModal(id) {
       watchedModalBtn.textContent = 'Remove From Watched'; // міняю текст в кнопці коли додаю фільм в переглянуті
       watchedModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
     }
-
-    const notRepeatId = itemsWatchedMovie.filter((id, index, array) => array.indexOf(id) === index); // не записує двічі один і той же фільм
-    localStorage.setItem('Watched', JSON.stringify(notRepeatId)); // зберігаю в сховище всі фільми
+    // const notRepeatId = itemsWatchedMovie.filter((id, index, array) => array.indexOf(id) === index); // не записує двічі один і той же фільм
+    localStorage.setItem('Watched', JSON.stringify(itemsWatchedMovie)); // зберігаю в сховище всі фільми
   }
 
   //--------------------------------ДЛЯ КНОПКИ QUEUE------------------------------------//
@@ -114,12 +114,13 @@ async function showMovieModal(id) {
     queueModalBtn.classList.add('js-modal-btn'); // кнопка міняє колір на активну
   }
 
-  const itemsQueueMovie = parseSavedQueueId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
-  const itemsQueueId = itemsQueueMovie.map(mov => mov.id); // тільки id
 
   queueModalBtn.addEventListener('click', onQueueModalBtn);
 
   function onQueueModalBtn() {
+    const itemsQueueMovie = parseSavedQueueId; // віддає дані з сховища, щоб можна було дальше добавляти до них нові фільми
+    const itemsQueueId = itemsQueueMovie.map(mov => mov.id); // тільки id
+
     if (itemsQueueId.includes(movieLib.id)) {
       // якщо id вже є в масиві, то його видаляє з масиву
       const indexId = itemsQueueId.indexOf(movieLib.id); // шукаю індекс id
@@ -165,7 +166,10 @@ function onClose(event) {
     return onWatchedBtn(); // оновлюю переглянуті фільми
   }
 
-  if (refs.libraryBtn.classList.contains('current') && refs.queueBtn.classList.contains('active')) {
+  if (
+    refs.libraryBtn.classList.contains('current') &&
+    refs.queueBtn.classList.contains('active')
+  ) {
     return onQueueBtn(); // оновлюю чергу фільмів
   }
 }
