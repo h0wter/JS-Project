@@ -9,6 +9,7 @@ html {
 }
 
 body {
+  height: 100vh;
   background-color: #ffffff;
   font-family: Roboto, sans-serif;
 }
@@ -44,7 +45,7 @@ button {
 //
 
 .container {
-//   min-width: 320px;
+  //   min-width: 320px;
   // width: 100%;
   // padding-left: 15px;
   // padding-right: 15px;
@@ -76,5 +77,3 @@ button {
   clip-path: inset(50%);
   margin: -1px;
 }
-
-
