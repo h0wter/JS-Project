@@ -38,24 +38,25 @@
         <div class="header_form-container">
           <form class="header__form" name="form" autocomplete="off" id="form" novalidate>
             <div class="header__form-flex">
-            <label class="form__label">
-              <input
-                class="form__input"
-                type="text"
-                name="search"
-                placeholder="Search film"
-                id="search"
-                onclick="this.value = ''"
-              />
-              
-            </label>
-            <button class="form__btn" type="submit">
-              <svg class="form__icon" width="12" height="12">
-                <use href="./images/symbol-defs.svg#icon-search" />
-              </svg>
-            </button>
+              <label class="form__label">
+                <input
+                  class="form__input"
+                  type="text"
+                  name="search"
+                  placeholder="Search film"
+                  id="search"
+                  onclick="this.value = ''"
+                />
+              </label>
+              <button class="form__btn" type="submit">
+                <svg class="form__icon" width="12" height="12">
+                  <use href="./images/symbol-defs.svg#icon-search" />
+                </svg>
+              </button>
             </div>
-            <p id="input-error" class="input-error  visually-hidden">Search result not successful. Enter the correct movie name and try again</p>
+            <p id="input-error" class="input-error visually-hidden">
+              Search result not successful. Enter the correct movie name and try again
+            </p>
           </form>
         </div>
         <div class="header_buttons-container display-none">
@@ -70,21 +71,26 @@
         </div>
         <div class="toolbar">
           <svg class="theme-switch__icon sun" role="img" aria-label="Иконка солнца">
-              <use href="./images/symbol-defs.svg#icon-sun-fill"></use>
+            <use href="./images/symbol-defs.svg#icon-sun-fill"></use>
           </svg>
           <div class="theme-switch">
-              <div class="theme-switch__control">
-                  <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-                      aria-label="Зміна між світлою і темною темою" />
-                  <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
-                  </label>
-                  <div aria-hidden="true" class="theme-switch__marker"></div>
-              </div>
+            <div class="theme-switch__control">
+              <input
+                class="theme-switch__toggle"
+                type="checkbox"
+                name="theme"
+                id="theme-switch-toggle"
+                aria-label="Зміна між світлою і темною темою"
+              />
+              <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+              </label>
+              <div aria-hidden="true" class="theme-switch__marker"></div>
+            </div>
           </div>
           <svg class="theme-switch__icon moon" aria-label="Иконка луны">
-              <use href="./images/symbol-defs.svg#icon-moon-stroke"></use>
+            <use href="./images/symbol-defs.svg#icon-moon-stroke"></use>
           </svg>
-      </div>
+        </div>
       </div>
     </header>
     <section class="gallery">
@@ -94,71 +100,303 @@
           <div class="arc"></div>
           <div class="arc"></div>
         </div>
-        <ul class="gallery__list">
-          <!-- <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li>
-          <li class="gallery__card">
-            <img class="gallery__img" src="./images/Rectangle 5.jpg" alt="" />
-            <div class="gallery__thumb">
-              <h3 class="gallery__name">GREYHOUND</h3>
-              <p class="gallery__description">Drama, Action | 2020</p>
-            </div>
-          </li> -->
-        </ul>
+        <ul class="gallery__list"></ul>
       </div>
     </section>
     <footer class="footer">
-      <div class="container">
-        <div class="footer__action">
-          
-          <ul class="footer__list js-pagination"></ul>
-           
-        </div>
-        <div class="footer__text">
-          <p class="footer__copy">
-            &copy; 2020 | All Rights Reserved | Developed with
-            <svg class="icon-heart">
-              <use href="./images/symbol-defs.svg#icon-heart" />
-            </svg>
-            by <span class="goit-student">GoIT Students</span>
-          </p>
-        </div>
+      <div class="footer__action">
+        <ul class="footer__list js-pagination"></ul>
+      </div>
+      <div class="footer__text">
+        <p class="footer__copy">
+          &copy; 2022 | All Rights Reserved | Developed with
+          <svg class="icon-heart">
+            <use href="./images/symbol-defs.svg#icon-heart" />
+          </svg>
+          by&nbsp;<span class="goit-student">GoIT Students</span>
+        </p>
       </div>
     </footer>
     <div class="backdrop is-hidden" data-modal></div>
+    <div class="backdrop-trailer is-hidden">
+      
+
+    </div>
     <button class="upbtn notvisible arrowspin" type="button">
       <svg class="uparrow">
         <use href="./images/symbol-defs.svg#icon-up-arrow"></use>
       </svg>
     </button>
-
-    <!-- <include src="./partials/example.html"></include> -->
+    <div class="footer-backdrop is-hidden" data-footer-modal>
+      <div class="footer-modal">
+        <button
+          type="button"
+          class="modal__btn--close footer__btn-close"
+          data-footer-modal-close=""
+        ></button>
+        <ul class="footer-team-list">
+          <li class="footer-team-item">
+            <div class="footer-card-container">
+              <div class="card">
+                <div class="front face">
+                  <h1>Vlad Holik</h1>
+                  <h1 style="font-size: 3em">Team Lead</h1>
+                </div>
+                <div class="back face">
+                  <img class="footer__team-img" src="./images/our-team/vlad.jpg" alt="Vlad Holik" />
+                  <a
+                    href="https://www.linkedin.com/in/h0wter/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-first" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-linkedin" /></svg
+                  ></a>
+                  <a href="https://github.com/h0wter/" target="_blank" rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-second" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-github" /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="footer-team-item">
+            <div class="footer-card-container">
+              <div class="card">
+                <div class="front face">
+                  <h1>Mikhail Kivshar</h1>
+                  <h1 style="font-size: 3em">Scrum</h1>
+                </div>
+                <div class="back face">
+                  <img
+                    class="footer__team-img"
+                    src="./images/our-team/mihail.jpg"
+                    alt="Mikhail Kivshar"
+                  />
+                  <a
+                    href="https://www.linkedin.com/in/mikhail-kivshar-2a3a58236/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-first" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-linkedin" /></svg
+                  ></a>
+                  <a
+                    href="https://github.com/Mikhail-Kovshar/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-second" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-github" /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="footer-team-item">
+            <div class="footer-card-container">
+              <div class="card">
+                <div class="front face">
+                  <h1>Marian Kuzyk</h1>
+                </div>
+                <div class="back face">
+                  <img
+                    class="footer__team-img"
+                    src="./images/our-team/marian.jpg"
+                    alt="Marian Kuzyk"
+                  />
+                  <a
+                    href="https://www.linkedin.com/in/marian-kuzyk-27a47a22b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-first" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-linkedin" /></svg
+                  ></a>
+                  <a href="https://github.com/mrkuzyk" target="_blank" rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-second" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-github" /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="footer-team-item">
+            <div class="footer-card-container">
+              <div class="card">
+                <div class="front face">
+                  <h1>Oleh Mozghovyi</h1>
+                </div>
+                <div class="back face">
+                  <img
+                    class="footer__team-img"
+                    src="./images/our-team/oleg.jpg"
+                    alt="Oleh Mozghovyi"
+                  />
+                  <a
+                    href="https://www.linkedin.com/in/%D0%BE%D0%BB%D0%B5%D0%B3-%D0%BC%D0%BE%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D0%B9-58993a23a/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-first" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-linkedin" /></svg
+                  ></a>
+                  <a href="https://github.com/Mozgarik" target="_blank" rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-second" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-github" /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="footer-team-item">
+            <div class="footer-card-container">
+              <div class="card">
+                <div class="front face">
+                  <h1>Volodymyr Skurikhin</h1>
+                </div>
+                <div class="back face">
+                  <img
+                    class="footer__team-img"
+                    src="./images/our-team/vladimir.jpg"
+                    alt="Volodymyr Skurikhin"
+                  />
+                  <a
+                    href="https://www.linkedin.com/in/volodymyr-skurikhin-33198b169/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-first" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-linkedin" /></svg
+                  ></a>
+                  <a
+                    href="https://github.com/VolodymyrSkurikhin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-second" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-github" /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="footer-team-item">
+            <div class="footer-card-container">
+              <div class="card">
+                <div class="front face">
+                  <h1>Kateryna Lytvyn</h1>
+                </div>
+                <div class="back face">
+                  <img
+                    class="footer__team-img"
+                    src="./images/our-team/kateryna.jpg"
+                    alt="Kateryna Lytvyn "
+                  />
+                  <a
+                    href="https://www.linkedin.com/in/kateryna-lytvyn/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-first" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-linkedin" /></svg
+                  ></a>
+                  <a
+                    href="https://github.com/KaterynaLytvyn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-second" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-github" /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="footer-team-item">
+            <div class="footer-card-container">
+              <div class="card">
+                <div class="front face">
+                  <h1>Anna Fesenko</h1>
+                </div>
+                <div class="back face">
+                  <img
+                    class="footer__team-img"
+                    src="./images/our-team/anna.jpg"
+                    alt="Anna Fesenko"
+                  />
+                  <a
+                    href="http://www.linkedin.com/in/%D0%B0%D0%BD%D0%BD%D0%B0-%D1%84%D0%B5%D1%81%D0%B5%D0%BD%D0%BA%D0%BE-50903023b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-first" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-linkedin" /></svg
+                  ></a>
+                  <a
+                    href="https://github.com/AnnaFesenko7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-second" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-github" /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="footer-team-item">
+            <div class="footer-card-container">
+              <div class="card">
+                <div class="front face">
+                  <h1>Nicole Gutsul</h1>
+                </div>
+                <div class="back face">
+                  <img
+                    class="footer__team-img"
+                    src="./images/our-team/nicole.jpg"
+                    alt="Nicole Gutsul"
+                  />
+                  <a
+                    href="https://www.linkedin.com/in/nicole-gutsul"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-first" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-linkedin" /></svg
+                  ></a>
+                  <a
+                    href="https://github.com/NicoleGutsul"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-second" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-github" /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="footer-team-item">
+            <div class="footer-card-container">
+              <div class="card">
+                <div class="front face">
+                  <h1>Roma Yourchuk</h1>
+                </div>
+                <div class="back face">
+                  <img
+                    class="footer__team-img"
+                    src="./images/our-team/roman.jpg"
+                    alt="Roma Yourchuk"
+                  />
+                  <a
+                    href="https://www.linkedin.com/in/roman-yurchuk-ba6243221/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-first" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-linkedin" /></svg
+                  ></a>
+                  <a
+                    href="https://github.com/RomaYourchuk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><svg class="footer-icons footer-icon-second" width="48" height="48">
+                      <use href="./images/symbol-defs.svg#icon-github" /></svg
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <script src="./index.js"></script>
   </body>
