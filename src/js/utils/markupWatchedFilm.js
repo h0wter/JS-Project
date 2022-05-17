@@ -12,15 +12,15 @@ export default function markupWatchedFilm() {
 
   parseSavedWatchedMovie.forEach(movie => {
     // створюю об'єкт з необхідними даними для розмітки
-      let film = {
-        backdrop_path: movie.backdrop_path,
-        poster_path: movie.poster_path,
-        original_title: movie.original_title,
-        id: movie.id,
-        genreNames: movie.genreNames,
-        shortDate: Number.parseInt(movie.release_date),
-        vote_average_lib: movie.vote_average // рейтинг записую під інше імя, щоб додавався тільки в бібліотеку
-    }
+    let film = {
+      backdrop_path: movie.backdrop_path,
+      poster_path: movie.poster_path,
+      original_title: movie.original_title,
+      id: movie.id,
+      genreNames: movie.genreNames,
+      shortDate: Number.parseInt(movie.release_date),
+      vote_average: movie.vote_average, // рейтинг записую під інше імя, щоб додавався тільки в бібліотеку
+    };
 
     const genre = movie.genreNames;
     const genres = genre.split(','); // створюю масив жанрів
@@ -29,14 +29,14 @@ export default function markupWatchedFilm() {
     // перевірка на кількість жанрів
     function getGenreName(genres) {
       if (!genres.length || genres.length === 0) {
-        return ;
+        return;
       }
       if (genres.length <= 3) {
-      return `${genres} | `;
+        return `${genres} | `;
       }
       return `${genres[0]}, ${genres[1]}, Other | `;
     }
-    
+
     refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(film)); // розмітка
   });
 }
