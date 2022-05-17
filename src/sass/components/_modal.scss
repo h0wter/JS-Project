@@ -9,6 +9,25 @@
   overflow: auto;
 }
 
+.backdrop-trailer {
+  z-index: 11;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  background: rgba(0, 0, 0, 0.2);
+  transition: opacity 300ms linear, visibility 500ms linear;
+  overflow: auto;
+}
+
+.backdrop-trailer.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .modal {
   background-color: white;
   opacity: 1;
@@ -35,6 +54,28 @@
     min-height: 558px;
     padding: 40px 16px;
     display: flex;
+  }
+}
+
+.modal-trailer {
+  opacity: 1;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 999;
+}
+
+.info-video-frame {
+  width: 800px;
+  height: 500px;
+  @media screen and (max-width: 1024px) {
+    width: 650px;
+    height: 400px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 300px;
+    height: 180px;
   }
 }
 
@@ -79,6 +120,12 @@
   pointer-events: none;
 }
 
+.footer-backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .modal__btn {
   background-color: transparent;
   border: 1px solid #000000;
@@ -103,12 +150,12 @@
   }
 }
 
-.modal__btn:hover{
-    background-color: #fb7c22;
-    color: #ffffff;
-    border: none;
-  }
-// .modal__btn:focus 
+.modal__btn:hover {
+  background-color: #fb7c22;
+  color: #ffffff;
+  border: none;
+}
+// .modal__btn:focus
 
 .js-modal-btn {
   background-color: #ff6b01;
@@ -269,7 +316,21 @@
   line-height: 14px;
   text-transform: uppercase;
   margin-left: 12px;
-  width: 90px;
+  width: 288px;
+  @media screen and (max-width: 1024px) {
+    width: 265px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 240px;
+  }
+}
+
+.btn-trailer-modal {
+  margin-top: 15px;
+  margin-left: -2px;
+  @media screen and (max-width: 1024px) {
+    margin-left: -11px;
+  }
 }
 
 .player-link {

@@ -18,7 +18,8 @@ export default function markupWatchedFilm() {
         original_title: movie.original_title,
         id: movie.id,
         genreNames: movie.genreNames,
-        shortDate: Number.parseInt(movie.release_date)
+        shortDate: Number.parseInt(movie.release_date),
+        vote_average_lib: movie.vote_average // рейтинг записую під інше імя, щоб додавався тільки в бібліотеку
     }
 
     const genre = movie.genreNames;
@@ -37,7 +38,6 @@ export default function markupWatchedFilm() {
     }
     
     refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(film)); // розмітка
-
   });
 }
 

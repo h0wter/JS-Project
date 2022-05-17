@@ -61,6 +61,7 @@ export default class Main {
         return true;
       }
       const save = refs.search.value;
+
      let search = localStorage.getItem("Search by");
      let genre = localStorage.getItem("Genre Id")
      
@@ -77,7 +78,22 @@ if ( search === "Search") {
    totalPages = localStorage.getItem("Totalpages")
 }
     
+
+
+      // if (!save) {
+      //   apiService.getStartURL(page);
+      //   localStorage.setItem('Totalpages', totalPages);
+      // } else {
+      //   apiService.getsearchURL(page, save);
+      //   totalPages = localStorage.getItem('Totalpages');
+      // }
+
+
       apiService.getData().then(data => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
         moviesStorage.addMoviesToStorage(data.results);
         showLoader();
         // startSearch.addMoviesToCache(data.results);
@@ -86,7 +102,6 @@ if ( search === "Search") {
         closeLoader();
         renderListOfPages(page, totalPages);
       });
-     
     });
   }
 }

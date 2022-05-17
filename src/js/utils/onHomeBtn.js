@@ -11,6 +11,7 @@ export default function onHomeBtn() {
   refs.libraryBtn.classList.remove('current'); // знімає підсвітку з невідкритої кнопки
   refs.homeBtn.classList.add('current'); // підсвічує теперішню кнопку
   refs.headerEl.classList.remove('header-fon'); // міняє фон
+  refs.headerEl.classList.remove('js-header'); // вертаю падінг
   refs.search.value = '';
   let value = document.getElementById('select')
   value[0].selected = true

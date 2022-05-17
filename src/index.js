@@ -15,9 +15,14 @@ import { getGenre } from './js/getGenre.js';
 import { onScroll, goUp } from './js/utils/uparrow';
 import { closeLoader, showLoader } from './js/utils/loader';
 import onFormSubmit from './js/utils/onSubmit';
+import './js/components/footerModal';
 export let genreList;
+
 import './js/searchGenreForm';
 import './js/utils/onSearchByGenre'
+
+// import './js/utils/trailerBtn'
+
 
 getGenre()
   .then(entry => {
@@ -28,7 +33,9 @@ const main = new Main();
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.headerLogo.addEventListener('click', e => {
+  e.preventDefault();
   main.init();
+  onHomeBtn();
 });
 
 refs.homeBtn.addEventListener('click', e => {
@@ -40,25 +47,5 @@ refs.libraryBtn.addEventListener('click', onLibraryBtn);
 
 attachOpenModalEvent();
 
-// async function onFormSubmit(e) {
-//   e.preventDefault();
-//   const isActive = refs.inputError.classList.contains('input-error-active');
-
-//   const searchTerm = refs.search.value;
-
-//   if (!searchTerm.trim()) {
-//     if (isActive) return;
-//     refs.inputError.classList.replace('input-error', 'input-error-active'); //тут будет уведомление о неуспешном поиске
-//     return;
-//   }
-//   if (searchTerm.trim()) {
-//     refs.inputError.classList.replace('input-error-active', 'input-error');
-//   }
-//   const url = searchURL + '&query=' + searchTerm;
-//   await startSearch(url);
-//   if (result.results.length === 0) {
-//     Notiflix.Notify.warning('По вашему запросу ничего не найдено');
-//   }
-// }
 addEventListener('scroll', onScroll);
 refs.upBtn.addEventListener('click', goUp);

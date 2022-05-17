@@ -1,0 +1,98 @@
+.header_buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 62px;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 40px;
+    }
+}
+
+.library-buttons-list {
+
+    display: inline-flex;
+    justify-content: center;
+}
+
+.library-buttons-item {
+
+    display: block;
+
+    &:not(:first-child) {
+        margin-left: 20px;
+    }
+
+    @media screen and (min-width: 768px) {
+        &:not(:first-child) {
+            margin-left: 32px;
+        }
+    }
+    
+    @media screen and (min-width: 1024px) {
+        &:not(:first-child) {
+            margin-left: 16px;
+        }
+    }
+}
+
+.library-btn {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: #FFFFFF;
+
+    width: 130px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.56);
+    ;
+    // border-color: transparent;
+
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    @media screen and (min-width: 768px) {
+        width: 152px;
+        height: 44px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        width: 147px;
+        height: 42px;
+    }
+}
+
+.library-btn.active {
+    background: #FF6B01;
+    border: #FF6B01;
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+}
+
+.js-library-empty {
+
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 1.15;
+    color: #585757ad;
+
+    padding-top: 100px;
+    padding-bottom: 200px;
+}
+
+.js-vote {
+    border-radius: 5px;
+
+    padding-right: 10px;
+    padding-left: 9px;
+
+    margin-left: 8px;
+
+    background-color: #ff6b01;
+    color: #ffffff;
+}
+
