@@ -1,85 +1,73 @@
-.footer{
-    max-width: 1024px;
-    margin: 0 auto;
+.footer {
+  margin: 0 auto;
 }
 
-.footer__action{
-    padding-bottom: 60px;
+.footer__action {
+  padding-bottom: 60px;
 }
-.footer__list{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.footer__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.footer__item{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 16px;
-    border:none;
-    padding: 0;
-    background-color: transparent;
-    width: 40px;
-    height: 40px;
-    cursor: pointer
-
+.footer__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
-
-
 
 .footer__item.is-active {
-    background-color: #FF6B08;
-    border-radius: 5px;
+  background-color: #ff6b08;
+  border-radius: 5px;
 }
 
-
-
-
-.footer__icon{
-    width: 16px;
-    height: 16px;
-   
-    
+.footer__icon {
+  width: 16px;
+  height: 16px;
 }
 .footer__arrow {
-    width: 40px;
-    height: 40px;
-    background: #F7F7F7;
-    border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  background: #f7f7f7;
+  border-radius: 5px;
 }
 
 // .arrow-left{
 //     transform: matrix(-1, 0, 0, 1, 0, 0);
 // }
 
-
-
-
-
-.footer__text{
-    background-color: #F7F7F7;
-    padding-top: 30px;
-    padding-bottom: 28px;
+.footer__text {
+  background-color: #f7f7f7;
+  padding-top: 30px;
+  padding-bottom: 28px;
 }
-.footer__copy{
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.19;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    color: #545454;
+.footer__copy {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.19;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #545454;
 }
 
-.icon-heart{
-    width: 14px;
-    height: 13px;
-    fill: #FF6B08;
-    margin-left: 10px;
-    margin-right: 10px;
+.icon-heart {
+  width: 14px;
+  height: 13px;
+  fill: #ff6b08;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-.goit-student{
-    text-decoration: underline;
+.goit-student {
+  text-decoration: underline;
+  cursor: pointer;
 }

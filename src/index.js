@@ -15,6 +15,7 @@ import { getGenre } from './js/getGenre.js';
 import { onScroll, goUp } from './js/utils/uparrow';
 import { closeLoader, showLoader } from './js/utils/loader';
 import onFormSubmit from './js/utils/onSubmit';
+import './js/components/footerModal';
 export let genreList;
 // import './js/utils/trailerBtn'
 
