@@ -57,12 +57,10 @@
   }
 }
 
-
-
 .modal-trailer {
   opacity: 1;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   z-index: 999;
@@ -71,14 +69,14 @@
 .info-video-frame {
   width: 800px;
   height: 500px;
-@media screen and (max-width: 1024px) {
-  width: 650px;
-  height: 400px;
-}
-@media screen and (max-width: 768px) {
-  width: 300px;
-  height: 180px;
-}
+  @media screen and (max-width: 1024px) {
+    width: 650px;
+    height: 400px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 300px;
+    height: 180px;
+  }
 }
 
 .modal-left {
@@ -152,12 +150,12 @@
   }
 }
 
-.modal__btn:hover{
-    background-color: #fb7c22;
-    color: #ffffff;
-    border: none;
-  }
-// .modal__btn:focus 
+.modal__btn:hover {
+  background-color: #fb7c22;
+  color: #ffffff;
+  border: none;
+}
+// .modal__btn:focus
 
 .js-modal-btn {
   background-color: #ff6b01;
