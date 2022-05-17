@@ -13,6 +13,9 @@ export default class Main {
   }
 
   init() {
+  
+    
+    localStorage.setItem("Search by", "Start");
     let page = 1;
     apiService.getStartURL(page);
     apiService
@@ -58,12 +61,18 @@ export default class Main {
         return true;
       }
       const save = refs.search.value;
-
-if(!save){
+     let search = localStorage.getItem("Search by");
+     let genre = localStorage.getItem("Genre Id")
+     
+if(search === "Start" ){
   apiService.getStartURL(page);
   localStorage.setItem ("Totalpages", totalPages)
 }
-else {
+if ( search === "Genre") {
+  apiService.getSearchURLbyGenre(page, genre);
+  totalPages = localStorage.getItem("Totalpages")
+}
+if ( search === "Search") {
   apiService.getsearchURL(page, save);
    totalPages = localStorage.getItem("Totalpages")
 }
