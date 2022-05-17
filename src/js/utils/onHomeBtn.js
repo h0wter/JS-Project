@@ -13,6 +13,8 @@ export default function onHomeBtn() {
   refs.headerEl.classList.remove('header-fon'); // міняє фон
   refs.headerEl.classList.remove('js-header'); // вертаю падінг
   refs.search.value = '';
+  let value = document.getElementById('select')
+  value[0].selected = true
   // перевірка на видимість пагінації з кнопки library
   if (refs.paginationEl.classList.contains('display-none')) {
     refs.paginationEl.classList.remove('display-none');

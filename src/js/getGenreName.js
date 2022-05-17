@@ -1,7 +1,22 @@
 import { genreList } from '../index.js';
 
+
+
+
 export function getGenreName(idList) {
-  const foundGenres = idList.map(id => genreList[id]).filter(genre => genre);
+
+
+  const list = localStorage.getItem("Genre list")
+
+  const glist = JSON.parse(list)
+  const listObj = {};
+    for (const { id, name } of glist) {
+      listObj[id] = name;
+    }
+
+
+
+  const foundGenres = idList.map(id => listObj[id]).filter(genre => genre);
 
   if (foundGenres.length <= 3) {
     return foundGenres.join(', ');
@@ -10,5 +25,13 @@ export function getGenreName(idList) {
 }
 
 export function getFullGerneNames(idList) {
-  return idList.map(id => genreList[id]).filter(genre => genre).join(', ');
+  const list = localStorage.getItem("Genre list")
+
+  const glist = JSON.parse(list)
+  const listObj = {};
+    for (const { id, name } of glist) {
+      listObj[id] = name;
+    }
+
+  return idList.map(id => listObj[id]).filter(genre => genre).join(', ');
 }

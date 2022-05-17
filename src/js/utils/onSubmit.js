@@ -23,7 +23,10 @@ export default function onFormSubmit(e) {
   if (searchTerm.trim()) {
     hideError();
   }
+   let value = document.getElementById('select')
+   value[0].selected = true
   
+  localStorage.setItem ("Search by", "Search");
   let page = 1;
   apiService.getsearchURL(page, searchTerm);
   apiService
@@ -64,7 +67,7 @@ export function hideError() {
   // refs.search.value = '';
 }
 
-function searchClickedPage(page) {
+export function searchClickedPage(page) {
   document.addEventListener('click', e => {
     const classes = e.target.classList;
     const dataAtrrPage = e.target.dataset?.page;
