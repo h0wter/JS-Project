@@ -204,7 +204,7 @@
 .modal-subtitles {
   width: 100%;
   margin-bottom: 20px;
-//  border-spacing: 0px 8px;
+  //  border-spacing: 0px 8px;
   border-collapse: collapse;
 }
 
@@ -218,11 +218,11 @@
   color: #8c8c8c;
   width: 50%;
   vertical-align: top;
-  padding-bottom: 8px;
+  padding: 0 0 8px 0;
 }
 
 .modal-subtitles__item--value {
-  padding-bottom: 8px;
+  padding: 0 0 8px 0;
 }
 
 .modal-subtitles tr:last-child td {
