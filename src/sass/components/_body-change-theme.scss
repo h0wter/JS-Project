@@ -112,6 +112,11 @@ body.dark-theme {
   align-items: center;
 }
 
+.theme-switch-container {
+  display: flex;
+  align-items: center;
+}
+
 .theme-switch__icon {
   height: 14px;
   width: 14px;
@@ -126,7 +131,7 @@ body.dark-theme {
   flex-shrink: 0;
   position: relative;
   width: 34px;
-  height: 9px;
+  height: 12px;
   border-radius: 50em;
   padding: 2px 0;
 }
@@ -170,7 +175,7 @@ body.dark-theme {
   position: relative;
   background-color: black;
   width: 8px;
-  height: 6px;
+  height: 8px;
   border-radius: 50%;
   z-index: 2;
   pointer-events: none;
