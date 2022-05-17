@@ -41,10 +41,7 @@ export default class Main {
     document.addEventListener('click', e => {
       const classes = e.target.classList;
       const dataAtrrPage = e.target.dataset?.page;
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+
       if (dataAtrrPage === 'next') {
         Number((page += 1));
       } else if (dataAtrrPage === 'prev') {
@@ -71,6 +68,10 @@ export default class Main {
       }
 
       apiService.getData().then(data => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
         moviesStorage.addMoviesToStorage(data.results);
         showLoader();
         // startSearch.addMoviesToCache(data.results);
