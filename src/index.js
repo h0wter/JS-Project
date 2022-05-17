@@ -42,25 +42,5 @@ refs.libraryBtn.addEventListener('click', onLibraryBtn);
 
 attachOpenModalEvent();
 
-// async function onFormSubmit(e) {
-//   e.preventDefault();
-//   const isActive = refs.inputError.classList.contains('input-error-active');
-
-//   const searchTerm = refs.search.value;
-
-//   if (!searchTerm.trim()) {
-//     if (isActive) return;
-//     refs.inputError.classList.replace('input-error', 'input-error-active'); //тут будет уведомление о неуспешном поиске
-//     return;
-//   }
-//   if (searchTerm.trim()) {
-//     refs.inputError.classList.replace('input-error-active', 'input-error');
-//   }
-//   const url = searchURL + '&query=' + searchTerm;
-//   await startSearch(url);
-//   if (result.results.length === 0) {
-//     Notiflix.Notify.warning('По вашему запросу ничего не найдено');
-//   }
-// }
 addEventListener('scroll', onScroll);
 refs.upBtn.addEventListener('click', goUp);
