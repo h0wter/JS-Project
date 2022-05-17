@@ -13,6 +13,9 @@ export default class Main {
   }
 
   init() {
+  
+    
+    localStorage.setItem("Search by", "Start");
     let page = 1;
     apiService.getStartURL(page);
     apiService
@@ -59,13 +62,32 @@ export default class Main {
       }
       const save = refs.search.value;
 
-      if (!save) {
-        apiService.getStartURL(page);
-        localStorage.setItem('Totalpages', totalPages);
-      } else {
-        apiService.getsearchURL(page, save);
-        totalPages = localStorage.getItem('Totalpages');
-      }
+     let search = localStorage.getItem("Search by");
+     let genre = localStorage.getItem("Genre Id")
+     
+if(search === "Start" ){
+  apiService.getStartURL(page);
+  localStorage.setItem ("Totalpages", totalPages)
+}
+if ( search === "Genre") {
+  apiService.getSearchURLbyGenre(page, genre);
+  totalPages = localStorage.getItem("Totalpages")
+}
+if ( search === "Search") {
+  apiService.getsearchURL(page, save);
+   totalPages = localStorage.getItem("Totalpages")
+}
+    
+
+
+      // if (!save) {
+      //   apiService.getStartURL(page);
+      //   localStorage.setItem('Totalpages', totalPages);
+      // } else {
+      //   apiService.getsearchURL(page, save);
+      //   totalPages = localStorage.getItem('Totalpages');
+      // }
+
 
       apiService.getData().then(data => {
         window.scrollTo({

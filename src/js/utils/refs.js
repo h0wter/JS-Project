@@ -19,6 +19,7 @@ const refs = {
   upBtn: document.querySelector('.upbtn'),
   pagination: document.querySelector('.js-pagination'),
   headerLogo: document.querySelector('.header__logo'),
+  searcGenreForm: document.querySelector('.select')
 };
 
 export default refs;
