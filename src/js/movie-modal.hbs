@@ -19,42 +19,32 @@
     <h1 class='modal__title' data-id={{id}}>{{#if
         original_title
       }}{{original_title}}{{/if}}{{original_name}}</h1>
-    <ul class='modal-subtitles'>
-      <li class='modal-subtitles__item'>Vote / Votes</li>
-      <li class='modal-subtitles__item'><span
-          class='modal-vote modal-vote--avg'
-        >{{vote_average}}</span>
-        /
-        <span class='modal-vote modal-vote--count'>{{vote_count}}</span></li>
-      <li class='modal-subtitles__item'>Popularity</li>
-      <li class='modal-subtitles__item'>{{popularity}}</li>
-      <li class='modal-subtitles__item'>Original Title</li>
-      <li class='modal-subtitles__item'>{{#if
+    <table class='modal-subtitles'>
+      <tr class='modal-subtitles__item'>
+        <td class="modal-subtitles__item--label">Vote / Votes</td>
+        <td class="modal-subtitles__item--value">
+          <span class='modal-vote modal-vote--avg'>{{vote_average}}</span>
+         /
+          <span class='modal-vote modal-vote--count'>{{vote_count}}</span>
+        </td>
+      </tr>
+      <tr class='modal-subtitles__item'>
+        <td class="modal-subtitles__item--label">Popularity</td>
+        <td class="modal-subtitles__item--value">{{popularity}}</td>
+      </tr>
+      <tr class='modal-subtitles__item'>
+        <td class="modal-subtitles__item--label">Original Title</td>
+        <td class="modal-subtitles__item--value">{{#if
           original_title
-        }}{{original_title}}{{/if}}{{original_name}}</li>
-      {{#if genreNames}}
-        <li class='modal-subtitles__item'>Genre</li>
-        <li class='modal-subtitles__item'>{{genreNames}}</li>
+        }}{{original_title}}{{/if}}{{original_name}}</td>
+      </tr>
+     {{#if genreNames}}
+      <tr class='modal-subtitles__item'>
+        <td class="modal-subtitles__item--label ">Genre</td>
+        <td class="modal-subtitles__item--value">{{genreNames}}</td>
+      </tr>
       {{/if}}
-      {{!-- <li class='modal-subtitles__item'>Trailer</li>
-      <li class='modal-subtitles__item'>
-        {{#if video}}
-          <iframe
-            class='info-video-frame'
-            width='200px'
-            src='https://www.youtube.com/embed/{{video}}'
-            frameborder='0'
-            frameborder='0'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-            allowfullscreen
-          >
-          </iframe>
-        {{else}}
-          No video for this movie
-        {{/if}}
-      </li> --}}
-
-    </ul>
+    </table>
     <h2 class='modal-about__title'>ABOUT</h2>
     <p class='modal-about__text'>{{overview}}</p>
     <ul class='modal-buttons__list'>
