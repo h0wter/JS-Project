@@ -1,52 +1,47 @@
 import refs from './refs';
-import fetchId from './fetchId';
 import movieCardTpl from '../movie-card.hbs';
 
 export default function markupWatchedFilm() {
-  const savedWatchedId = localStorage.getItem('Watched'); // отримую збережені id з пам'яті
-  const parseSavedWatchedId = JSON.parse(savedWatchedId); // роблю масив збережених id для перебору
+  const savedWatchedMovie = localStorage.getItem('Watched'); // отримую збережені фільми з пам'яті
+  const parseSavedWatchedMovie = JSON.parse(savedWatchedMovie); // роблю масив збережених фільмів для перебору
 
   // якщо немає збережених фільмів або немає localStorage то пише, що немає фільмів
-  if (localStorage.getItem('Watched') === null || parseSavedWatchedId.length === 0) {
+  if (localStorage.getItem('Watched') === null || parseSavedWatchedMovie.length === 0) {
     return (refs.galleryList.innerHTML = noWatched());
   }
 
-  // створюю картки фільмів
-  parseSavedWatchedId.forEach(e => {
-    fetchId(e).then(movie => {
-      // створюю об'єкт з необхідними даними для розмітки
+  parseSavedWatchedMovie.forEach(movie => {
+    // створюю об'єкт з необхідними даними для розмітки
       let film = {
         backdrop_path: movie.backdrop_path,
         poster_path: movie.poster_path,
         original_title: movie.original_title,
         id: movie.id,
-        genreNames: movie.genres,
+        genreNames: movie.genreNames,
         shortDate: Number.parseInt(movie.release_date),
-      };
+        vote_average_lib: movie.vote_average // рейтинг записую під інше імя, щоб додавався тільки в бібліотеку
+    }
 
-      // дістаю жанри
-      const genres = movie.genres.map(m => m.name);
+    const genre = movie.genreNames;
+    const genres = genre.split(','); // створюю масив жанрів
+    film.genreNames = getGenreName(genres);
 
-      film.genreNames = getGenreName(genres);
-      // функція з перевіркою на кількість жанрів
-      function getGenreName(genres) {
-        if (genres.length === 0) {
-          return;
-        }
-        if (genres.length <= 3) {
-          let str = genres.join(', ');
-          return `${str} | `;
-        }
-        return `${genres[0]}, ${genres[1]}, Other | `;
+    // перевірка на кількість жанрів
+    function getGenreName(genres) {
+      if (!genres.length || genres.length === 0) {
+        return ;
       }
-
-      refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(film));
-      return;
-    });
+      if (genres.length <= 3) {
+      return `${genres} | `;
+      }
+      return `${genres[0]}, ${genres[1]}, Other | `;
+    }
+    
+    refs.galleryList.insertAdjacentHTML('beforeend', movieCardTpl(film)); // розмітка
   });
 }
 
 // повідомлення, якщо немає фільмів
 function noWatched() {
-  return '<h2 class="js-library-empty">hey...no movies watched</h2>';
+  return '<h2 class="js-library-empty">no movies watched</h2>';
 }

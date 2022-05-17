@@ -17,6 +17,7 @@ import { closeLoader, showLoader } from './js/utils/loader';
 import onFormSubmit from './js/utils/onSubmit';
 import './js/components/footerModal';
 export let genreList;
+// import './js/utils/trailerBtn'
 
 getGenre()
   .then(entry => {
@@ -61,3 +62,4 @@ attachOpenModalEvent();
 // }
 addEventListener('scroll', onScroll);
 refs.upBtn.addEventListener('click', goUp);
+
