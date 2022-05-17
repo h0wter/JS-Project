@@ -16,7 +16,7 @@ import { onScroll, goUp } from './js/utils/uparrow';
 import { closeLoader, showLoader } from './js/utils/loader';
 import onFormSubmit from './js/utils/onSubmit';
 import './js/components/footerModal';
-export let genreList;
+// export let genreList;
 
 import './js/searchGenreForm';
 import './js/utils/onSearchByGenre'
@@ -24,11 +24,11 @@ import './js/utils/onSearchByGenre'
 // import './js/utils/trailerBtn'
 
 
-getGenre()
-  .then(entry => {
-    return (genreList = entry);
-  })
-  .catch(error => console.log(error));
+// getGenre()
+//   .then(entry => {
+//     return (genreList = entry);
+//   })
+//   .catch(error => console.log(error));
 const main = new Main();
 
 refs.form.addEventListener('submit', onFormSubmit);

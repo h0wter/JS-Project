@@ -4,8 +4,6 @@ import NewsApiService from "./api/newsApiService";
 
 const apiService = new NewsApiService();
 
-
-      
                 apiService.getGenreURL();
                 apiService
                 .getData().then(entry => {
@@ -23,3 +21,4 @@ const apiService = new NewsApiService();
             refs.searcGenreForm.innerHTML = searchMarcup;
         
         })
+        
