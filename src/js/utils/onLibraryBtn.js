@@ -8,6 +8,7 @@ export default function onLibraryBtn() {
     refs.homeBtn.classList.remove('current'); // знімає підсвітку з невідеритої кнопки
     refs.libraryBtn.classList.add('current'); // підсвічує теперішню кнопку
     refs.headerEl.classList.add('header-fon'); // міняє фон 
+    refs.headerEl.classList.add('js-header') // менший падінг
     
     onWatchedBtn()
     // refs.queueBtn.addEventListener('click', onQueueBtn);

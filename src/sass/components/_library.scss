@@ -1,7 +1,11 @@
 .header_buttons-container {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 62px;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 40px;
+    }
 }
 
 .library-buttons-list {
@@ -15,7 +19,19 @@
     display: block;
 
     &:not(:first-child) {
-        margin-left: 16px;
+        margin-left: 20px;
+    }
+
+    @media screen and (min-width: 768px) {
+        &:not(:first-child) {
+            margin-left: 32px;
+        }
+    }
+    
+    @media screen and (min-width: 1024px) {
+        &:not(:first-child) {
+            margin-left: 16px;
+        }
     }
 }
 
@@ -25,8 +41,8 @@
     line-height: 1.33;
     color: #FFFFFF;
 
-    width: 147px;
-    height: 42px;
+    width: 130px;
+    height: 44px;
 
     display: flex;
     align-items: center;
@@ -40,6 +56,15 @@
 
     border: 1px solid #FFFFFF;
     border-radius: 5px;
+    @media screen and (min-width: 768px) {
+        width: 152px;
+        height: 44px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        width: 147px;
+        height: 42px;
+    }
 }
 
 .library-btn.active {
@@ -70,3 +95,4 @@
     background-color: #ff6b01;
     color: #ffffff;
 }
+
