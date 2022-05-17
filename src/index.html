@@ -75,27 +75,28 @@
           <div>
             <select class="select" id="select"></select>
           </div>
-
-          <svg class="theme-switch__icon sun" role="img" aria-label="Иконка солнца">
-            <use href="./images/symbol-defs.svg#icon-sun-fill"></use>
-          </svg>
-          <div class="theme-switch">
-            <div class="theme-switch__control">
-              <input
-                class="theme-switch__toggle"
-                type="checkbox"
-                name="theme"
-                id="theme-switch-toggle"
-                aria-label="Зміна між світлою і темною темою"
-              />
-              <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
-              </label>
-              <div aria-hidden="true" class="theme-switch__marker"></div>
+          <div class="theme-switch-container">
+            <svg class="theme-switch__icon sun" role="img" aria-label="Иконка солнца">
+              <use href="./images/symbol-defs.svg#icon-sun-fill"></use>
+            </svg>
+            <div class="theme-switch">
+              <div class="theme-switch__control">
+                <input
+                  class="theme-switch__toggle"
+                  type="checkbox"
+                  name="theme"
+                  id="theme-switch-toggle"
+                  aria-label="Зміна між світлою і темною темою"
+                />
+                <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+                </label>
+                <div aria-hidden="true" class="theme-switch__marker"></div>
+              </div>
             </div>
+            <svg class="theme-switch__icon moon" aria-label="Иконка луны">
+              <use href="./images/symbol-defs.svg#icon-moon-stroke"></use>
+            </svg>
           </div>
-          <svg class="theme-switch__icon moon" aria-label="Иконка луны">
-            <use href="./images/symbol-defs.svg#icon-moon-stroke"></use>
-          </svg>
         </div>
       </div>
     </header>
