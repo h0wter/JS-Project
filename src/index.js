@@ -28,7 +28,9 @@ const main = new Main();
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.headerLogo.addEventListener('click', e => {
+  e.preventDefault();
   main.init();
+  onHomeBtn();
 });
 
 refs.homeBtn.addEventListener('click', e => {
@@ -62,4 +64,3 @@ attachOpenModalEvent();
 // }
 addEventListener('scroll', onScroll);
 refs.upBtn.addEventListener('click', goUp);
-
