@@ -41,7 +41,10 @@ export default class Main {
     document.addEventListener('click', e => {
       const classes = e.target.classList;
       const dataAtrrPage = e.target.dataset?.page;
-
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
       if (dataAtrrPage === 'next') {
         Number((page += 1));
       } else if (dataAtrrPage === 'prev') {
@@ -59,15 +62,14 @@ export default class Main {
       }
       const save = refs.search.value;
 
-if(!save){
-  apiService.getStartURL(page);
-  localStorage.setItem ("Totalpages", totalPages)
-}
-else {
-  apiService.getsearchURL(page, save);
-   totalPages = localStorage.getItem("Totalpages")
-}
-    
+      if (!save) {
+        apiService.getStartURL(page);
+        localStorage.setItem('Totalpages', totalPages);
+      } else {
+        apiService.getsearchURL(page, save);
+        totalPages = localStorage.getItem('Totalpages');
+      }
+
       apiService.getData().then(data => {
         moviesStorage.addMoviesToStorage(data.results);
         showLoader();
@@ -77,8 +79,6 @@ else {
         closeLoader();
         renderListOfPages(page, totalPages);
       });
-     
     });
   }
 }
-
