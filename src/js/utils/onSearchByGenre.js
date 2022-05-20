@@ -6,6 +6,8 @@ import createMoviesMarkup from './createMoviesMarkup';
 import moviesStorage from './moviesStorage';
 import { showLoader, closeLoader } from './loader';
 import {searchClickedPage} from './onSubmit';
+import markupWatchedFilm from './markupWatchedFilm';
+import markupQueueFilm from './markupQueueFilm';
 
 refs.searcGenreForm.addEventListener("change",showResulte)
 const apiService = new NewsApiService();
@@ -13,6 +15,15 @@ const apiService = new NewsApiService();
 
 
 function showResulte(e) {
+  if( !refs.libraryContainer.classList.contains('display-none') && refs.watchedBtn.classList.contains('active')) {
+    markupWatchedFilm()
+    return
+  }
+  if( !refs.libraryContainer.classList.contains('display-none') && refs.queueBtn.classList.contains('active')) {
+    markupQueueFilm()
+    return
+  }
+
   refs.search.value = '';
   const genreID = Number(refs.searcGenreForm.value);
   localStorage.setItem ("Genre Id", genreID)

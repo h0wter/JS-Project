@@ -9,8 +9,21 @@ export default function markupWatchedFilm() {
   if (localStorage.getItem('Watched') === null || parseSavedWatchedMovie.length === 0) {
     return (refs.galleryList.innerHTML = noWatched());
   }
-
-  parseSavedWatchedMovie.forEach(movie => {
+  const genreID = Number(refs.searcGenreForm.value);
+let parseSavedWatchedMovieFilter =[]
+ if (genreID ===0){
+  refs.galleryList.innerHTML = ''
+    parseSavedWatchedMovieFilter = parseSavedWatchedMovie;
+ }
+ if (genreID !== 0){
+  refs.galleryList.innerHTML = ''
+  parseSavedWatchedMovieFilter = parseSavedWatchedMovie.filter(movie =>movie.genre_ids.includes(genreID))
+  if (parseSavedWatchedMovieFilter.length === 0){
+    return (refs.galleryList.innerHTML = noWatched());
+        }
+ }
+     
+  parseSavedWatchedMovieFilter.forEach(movie => {
     // створюю об'єкт з необхідними даними для розмітки
     let film = {
       backdrop_path: movie.backdrop_path,
