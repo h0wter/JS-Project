@@ -9,7 +9,9 @@ export default function onQueueBtn() {
     refs.queueBtn.removeEventListener('click', onQueueBtn); // виключаємо слухач
     refs.watchedBtn.addEventListener('click', onWatchedBtn); // включаю слухач на тепер вже неактивну кнопку
     refs.paginationEl.classList.add('display-none') // не потрібна пагінація, бо такі фільми зберігає більше 20
-
+    let value = document.getElementById('select')
+    value[0].selected = true
+    
     markupQueueFilm()
 }
 

@@ -9,7 +9,8 @@ export default function onLibraryBtn() {
     refs.libraryBtn.classList.add('current'); // підсвічує теперішню кнопку
     refs.headerEl.classList.add('header-fon'); // міняє фон 
     refs.headerEl.classList.add('js-header') // менший падінг
-    
+    let value = document.getElementById('select')
+    value[0].selected = true
     onWatchedBtn()
     // refs.queueBtn.addEventListener('click', onQueueBtn);
 };
